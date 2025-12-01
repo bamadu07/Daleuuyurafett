@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaleuuYuRafett - À propos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #333333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --gold-color: #d4af37;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-color) !important;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--gold-color);
+        }
+        
+        .btn-outline-light {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-gold:hover {
+            background-color: #b8941f;
+            color: var(--primary-color);
+        }
+        
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--gold-color) !important;
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        body.dark-mode .about-hero {
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-hero h1 {
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-hero .lead {
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--gold-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: right;
+            padding-right: 60px;
+            padding-left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
+            padding-left: 60px;
+            padding-right: 0;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .timeline-content {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .timeline-content:hover {
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--gold-color);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -60px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -60px;
+        }
+        
+        .timeline-content h4 {
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Team Section */
+        .team-member {
+            padding: 30px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--gold-color);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover img {
+            transform: scale(1.05);
+        }
+        
+        .team-member h4 {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        .text-gold {
+            color: var(--gold-color) !important;
+        }
+        
+        /* Values Section */
+        .values-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        body.dark-mode .values-section {
+            background-color: var(--accent-color);
+        }
+        
+        .value-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .value-card {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .value-card:hover {
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        body.dark-mode .stats-section {
+            background-color: var(--primary-color);
+        }
+        
+        .stat-item {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        body.dark-mode .footer {
+            background-color: var(--accent-color);
+        }
+        
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--gold-color);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold-color);
+            color: var(--primary-color) !important;
+            transform: translateY(-5px);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+        
+        body.dark-mode .notification {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Quick Cart Preview */
+        .quick-cart {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            width: 300px;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+            transform: translateY(-20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .quick-cart {
+            background-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-cart.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .cart-item-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--gold-color);
+            font-weight: 600;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -50px;
+            }
+            
+            .quick-cart {
+                width: 280px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="page-apropos">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DaleuuYuRafett
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="admin.html" class="btn btn-outline-light me-2">
+                        <i class="fas fa-cog me-1"></i>Admin
+                    </a>
+                    <span class="theme-toggle text-light me-3" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </span>
+                    <a href="#" class="btn btn-gold position-relative" id="cartButton">
+                        <i class="fas fa-shopping-cart"></i> Panier
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">
+                            0
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quick Cart Preview -->
+    <div class="quick-cart" id="quickCart">
+        <h6 class="mb-3">Votre Panier</h6>
+        <div id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">0 FCFA</span>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <a href="#" class="btn btn-gold">Voir le panier</a>
+            <a href="#" class="btn btn-outline-dark">Commander</a>
+        </div>
+    </div>
+
+    <!-- Contenu de la page À propos -->
+    <div class="page-apropos">
+        <div class="about-hero">
+            <div class="container">
+                <h1 class="display-4 fw-bold animate-on-scroll">Notre Histoire</h1>
+                <p class="lead animate-on-scroll" data-delay="200">Découvrez l'aventure DaleuuYuRafett</p>
+            </div>
+        </div>
+        
+        <!-- Notre Histoire -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-6 animate-on-scroll">
+                        <h2>Qui sommes-nous ?</h2>
+                        <p class="lead">Depuis 2020, nous redéfinissons l'élégance à Saint-Louis</p>
+                        <p>DaleuuYuRafett est née de la passion pour la chaussure artisanale et du désir d'offrir à notre communauté des produits de qualité exceptionnelle. Notre nom, inspiré de la riche culture sénégalaise, incarne l'authenticité et l'excellence.</p>
+                        <p>Nous sélectionnons rigoureusement chaque matériau et supervisons personnellement chaque étape de fabrication pour vous garantir des chaussures qui allient confort, durabilité et style unique.</p>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll" data-delay="200">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow" alt="Notre atelier">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 animate-on-scroll">Notre Parcours</h2>
+                <div class="timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <h4>2020 - Fondation</h4>
+                            <p>Création de DaleuuYuRafett avec seulement 3 modèles de chaussures. Notre petite boutique de Saint-Louis commence son aventure.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll" data-delay="200">
+                        <div class="timeline-content">
+                            <h4>2021 - Expansion</h4>
+                            <p>Lancement de notre site e-commerce et extension de notre collection à 15 modèles. Premières exportations vers Dakar.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll" data-delay="400">
+                        <div class="timeline-content">
+                            <h4>2022 - Reconnaissance</h4>
+                            <p>Obtention du prix "Meilleur Artisan Chausseur" de la région de Saint-Louis. Notre clientèle dépasse les 500 clients réguliers.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll" data-delay="600">
+                        <div class="timeline-content">
+                            <h4>2023 - Innovation</h4>
+                            <p>Lancement de notre ligne éco-responsable et partenariat avec des artisans locaux. Plus de 50 modèles disponibles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nos Valeurs -->
+        <section class="values-section">
+            <div class="container">
+                <h2 class="text-center mb-5 animate-on-scroll">Nos Valeurs</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4 animate-on-scroll">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <h4>Artisanat Local</h4>
+                            <p>Nous valorisons le savoir-faire traditionnel sénégalais et soutenons les artisans locaux dans chaque étape de production.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4 animate-on-scroll" data-delay="200">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4>Durabilité</h4>
+                            <p>Nous privilégions des matériaux de qualité et des méthodes de production respectueuses de l'environnement.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4 animate-on-scroll" data-delay="400">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Excellence</h4>
+                            <p>Chaque paire de chaussures est inspectée avec soin pour garantir une qualité et un confort exceptionnels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Statistiques -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 stat-item animate-on-scroll">
+                        <div class="stat-number" data-count="1200">0</div>
+                        <p>Paires vendues</p>
+                    </div>
+                    <div class="col-md-3 stat-item animate-on-scroll" data-delay="200">
+                        <div class="stat-number" data-count="50">0</div>
+                        <p>Modèles uniques</p>
+                    </div>
+                    <div class="col-md-3 stat-item animate-on-scroll" data-delay="400">
+                        <div class="stat-number" data-count="500">0</div>
+                        <p>Clients satisfaits</p>
+                    </div>
+                    <div class="col-md-3 stat-item animate-on-scroll" data-delay="600">
+                        <div class="stat-number" data-count="3">0</div>
+                        <p>Années d'expertise</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Équipe -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-5 animate-on-scroll">Notre Équipe</h2>
+                    </div>
+                    <div class="col-md-4 text-center animate-on-scroll">
+                        <div class="team-member">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Directeur" class="img-fluid rounded-circle mb-3">
+                            <h4>Mamadou Diallo</h4>
+                            <p class="text-gold">Fondateur & Directeur</p>
+                            <p>Passionné par l'artisanat local et l'excellence</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center animate-on-scroll" data-delay="200">
+                        <div class="team-member">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80">
+                            <h4>Fatou Ndiaye</h4>
+                            <p class="text-gold">Responsable Commercial</p>
+                            <p>Expert en relations clients et développement</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center animate-on-scroll" data-delay="400">
+                        <div class="team-member">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Artisan" class="img-fluid rounded-circle mb-3">
+                            <h4>Ibrahima Sarr</h4>
+                            <p class="text-gold">Maître Artisan</p>
+                            <p>20 ans d'expérience dans la chaussure de luxe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-shoe-prints me-2"></i>DaleuuYuRafett</h5>
+                    <p>Votre boutique de chaussures de confiance à Saint-Louis, Sénégal.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Accueil</a></li>
+                        <li><a href="apropos.html" class="text-light">À propos</a></li>
+                        <li><a href="produits.html" class="text-light">Produits</a></li>
+                        <li><a href="contact.html" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                    <p><i class="fas fa-phone"></i> 781980844</p>
+                    <p><i class="fas fa-envelope"></i> info@daleuuyurafett.sn</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 DaleuuYuRafett. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Produit ajouté au panier avec succès!
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cart functionality
+        let cart = [];
+        let cartCount = 0;
+        let cartTotal = 0;
+
+        // DOM Elements
+        const cartButton = document.getElementById('cartButton');
+        const cartCountElement = document.getElementById('cartCount');
+        const quickCart = document.getElementById('quickCart');
+        const cartItemsElement = document.getElementById('cartItems');
+        const cartTotalElement = document.getElementById('cartTotal');
+        const notification = document.getElementById('notification');
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize animations
+            initAnimations();
+            
+            // Initialize cart from localStorage if available
+            const savedCart = localStorage.getItem('daleuuyurafett_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+            
+            // Initialize theme from localStorage if available
+            const savedTheme = localStorage.getItem('daleuuyurafett_theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+
+        // Update cart UI
+        function updateCart() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            cartCountElement.textContent = cartCount;
+            cartTotalElement.textContent = `${cartTotal.toLocaleString()} FCFA`;
+            
+            // Update cart items in quick cart
+            let cartItemsHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsHTML = '<p class="text-center text-muted">Votre panier est vide</p>';
+            } else {
+                cart.forEach(item => {
+                    cartItemsHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${item.price.toLocaleString()} FCFA × ${item.quantity}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            cartItemsElement.innerHTML = cartItemsHTML;
+        }
+
+        // Show notification
+        function showNotification() {
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Toggle quick cart
+        cartButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            quickCart.classList.toggle('show');
+        });
+
+        // Close quick cart when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!cartButton.contains(e.target) && !quickCart.contains(e.target)) {
+                quickCart.classList.remove('show');
+            }
+        });
+
+        // Toggle dark mode
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('daleuuyurafett_theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('daleuuyurafett_theme', 'light');
+            }
+        });
+
+        // Initialize animations on scroll
+        function initAnimations() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay') || 0;
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Animate stats counter
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const count = parseInt(target.getAttribute('data-count'));
+                        const duration = 2000; // 2 seconds
+                        const step = count / (duration / 16); // 60fps
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= count) {
+                                current = count;
+                                clearInterval(timer);
+                            }
+                            target.textContent = Math.floor(current);
+                        }, 16);
+                        
+                        statsObserver.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statNumbers.forEach(number => {
+                statsObserver.observe(number);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaleuuYuRafett - Produits</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #333333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --gold-color: #d4af37;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .navbar {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-color) !important;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--gold-color);
+        }
+        
+        .btn-outline-light {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-gold:hover {
+            background-color: #b8941f;
+            color: var(--primary-color);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            color: white;
+        }
+        
+        .btn-wave {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-wave:hover {
+            background-color: #0066CC;
+            color: white;
+        }
+        
+        .btn-orange-money {
+            background-color: #FF6600;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-orange-money:hover {
+            background-color: #CC5200;
+            color: white;
+        }
+        
+        .btn-free-money {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-free-money:hover {
+            background-color: #654321;
+            color: white;
+        }
+        
+        .btn-kpay {
+            background-color: #FF6B00;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-kpay:hover {
+            background-color: #E55A00;
+            color: white;
+        }
+        
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--gold-color) !important;
+        }
+        
+        /* Hero Section */
+        .products-hero {
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%),
+                url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        body.dark-mode .products-hero {
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%),
+                url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .products-hero h1 {
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .products-hero .lead {
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Filter Sidebar */
+        .filter-sidebar {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+        
+        body.dark-mode .filter-sidebar {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        .filter-sidebar h5 {
+            color: var(--gold-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .filter-sidebar h6 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .filter-sidebar h6 {
+            color: var(--secondary-color);
+        }
+        
+        .price-filter {
+            padding: 10px 0;
+        }
+        
+        .form-range::-webkit-slider-thumb {
+            background-color: var(--gold-color);
+        }
+        
+        .form-range::-moz-range-thumb {
+            background-color: var(--gold-color);
+        }
+        
+        .size-filter .btn-group {
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .size-filter .btn {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        
+        /* Products Grid */
+        .product-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        body.dark-mode .product-card {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .product-card:hover {
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .product-category {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--gold-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .btn-outline-dark {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            flex: 1;
+        }
+        
+        body.dark-mode .btn-outline-dark {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        body.dark-mode .btn-outline-dark:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-gold {
+            flex: 2;
+        }
+        
+        /* Search and Filter Bar */
+        .search-filter-bar {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        body.dark-mode .search-filter-bar {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Quick View Modal */
+        .quick-view-modal .modal-content {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+        }
+        
+        body.dark-mode .quick-view-modal .modal-content {
+            background-color: var(--primary-color);
+        }
+        
+        .quick-view-modal .btn-close {
+            filter: invert(1);
+        }
+        
+        body.dark-mode .quick-view-modal .btn-close {
+            filter: invert(0);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        body.dark-mode .footer {
+            background-color: var(--accent-color);
+        }
+        
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--gold-color);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold-color);
+            color: var(--primary-color) !important;
+            transform: translateY(-5px);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+        }
+        
+        body.dark-mode .notification {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            border-left: 4px solid #28a745;
+        }
+        
+        .notification.error {
+            border-left: 4px solid #dc3545;
+        }
+        
+        .notification.warning {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Quick Cart Preview */
+        .quick-cart {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            width: 420px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+            transform: translateY(-20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .quick-cart {
+            background-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-cart.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--medium-gray);
+            position: relative;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--gold-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--medium-gray);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        body.dark-mode .quantity-btn {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+        }
+        
+        .quantity-display {
+            margin: 0 10px;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            color: #dc3545;
+            background: none;
+            border: none;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        
+        .remove-item:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--dark-gray);
+        }
+        
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--medium-gray);
+        }
+        
+        /* Order Modal */
+        .order-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .order-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .order-modal-content {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .order-modal-content {
+            background-color: var(--primary-color);
+        }
+        
+        .order-modal.show .order-modal-content {
+            transform: translateY(0);
+        }
+        
+        .order-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .order-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 5px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        body.dark-mode .form-control {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border-color: var(--accent-color);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Section paiement */
+        .payment-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--gold-color);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--gold-color);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .payment-method input {
+            margin-right: 10px;
+        }
+        
+        .payment-method-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .payment-details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        body.dark-mode .payment-details {
+            background-color: var(--accent-color);
+        }
+        
+        .payment-details.show {
+            display: block;
+        }
+        
+        .payment-info {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        body.dark-mode .payment-info {
+            color: var(--medium-gray);
+        }
+        
+        .order-summary {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        body.dark-mode .order-summary {
+            background-color: var(--accent-color);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .filter-sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .quick-cart {
+                width: 350px;
+                right: 10px;
+            }
+            
+            .products-hero {
+                padding: 100px 0 60px;
+            }
+        }
+    </style>
+</head>
+<body class="page-produits">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DaleuuYuRafett
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- LIEN VERS ADMIN.HTML AJOUTÉ -->
+                    <a href="admin.html" class="btn btn-outline-light me-2">
+                        <i class="fas fa-cog me-1"></i>Admin
+                    </a>
+                    <span class="theme-toggle text-light me-3" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </span>
+                    <!-- Bouton Panier avec fonctionnalité -->
+                    <a href="#" class="btn btn-gold position-relative" id="cartButton">
+                        <i class="fas fa-shopping-cart"></i> Panier
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">
+                            0
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quick Cart Preview -->
+    <div class="quick-cart" id="quickCart">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">Votre Panier</h6>
+            <button class="btn btn-sm btn-outline-secondary" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">0 FCFA</span>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <!-- BOUTONS DE PAIEMENT EN LIGNE DANS LE PANIER -->
+            <button class="btn btn-orange-money" onclick="openOrderModal('orange')">
+                <i class="fas fa-mobile-alt me-1"></i>Payer avec Orange Money
+            </button>
+            <button class="btn btn-wave" onclick="openOrderModal('wave')">
+                <i class="fas fa-mobile-alt me-1"></i>Payer avec Wave
+            </button>
+            <button class="btn btn-free-money" onclick="openOrderModal('free')">
+                <i class="fas fa-mobile-alt me-1"></i>Payer avec Free Money
+            </button>
+            <button class="btn btn-kpay" onclick="openOrderModal('kpay')">
+                <i class="fas fa-wallet me-1"></i>Payer avec Kpay
+            </button>
+            <button class="btn btn-whatsapp" onclick="openOrderModal('whatsapp')">
+                <i class="fab fa-whatsapp me-1"></i>Commander via WhatsApp
+            </button>
+            <button class="btn btn-outline-dark" onclick="viderPanier()">
+                <i class="fas fa-trash me-2"></i>Vider le panier
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de commande avec paiement -->
+    <div class="order-modal" id="orderModal">
+        <div class="order-modal-content">
+            <div class="order-modal-header">
+                <h5 class="mb-0">Finaliser votre commande</h5>
+                <button class="order-modal-close" onclick="closeOrderModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Résumé de la commande -->
+            <div class="order-summary">
+                <h6>Résumé de votre commande</h6>
+                <div id="orderSummaryItems">
+                    <!-- Items will be populated here -->
+                </div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="orderSummaryTotal">0 FCFA</span>
+                </div>
+            </div>
+            
+            <form id="orderForm">
+                <div class="form-group">
+                    <label class="form-label" for="customerName">Nom complet</label>
+                    <input type="text" class="form-control" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerPhone">Numéro de téléphone</label>
+                    <input type="tel" class="form-control" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerAddress">Adresse de livraison</label>
+                    <textarea class="form-control" id="customerAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerNotes">Notes supplémentaires (optionnel)</label>
+                    <textarea class="form-control" id="customerNotes" rows="2"></textarea>
+                </div>
+                
+                <!-- Section de paiement -->
+                <div class="payment-section">
+                    <h6>Méthode de paiement</h6>
+                    <div class="payment-methods">
+                        <!-- SYSTÈME DE PAIEMENT WHATSAPP -->
+                        <label class="payment-method" for="payment-whatsapp">
+                            <input type="radio" id="payment-whatsapp" name="paymentMethod" value="whatsapp">
+                            <div class="payment-method-icon text-success">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div>Paiement via WhatsApp</div>
+                                <small class="text-muted">Confirmation de commande par WhatsApp</small>
+                            </div>
+                        </label>
+                        
+                        <!-- SYSTÈME DE PAIEMENT WAVE -->
+                        <label class="payment-method" for="payment-wave">
+                            <input type="radio" id="payment-wave" name="paymentMethod" value="wave">
+                            <div class="payment-method-icon text-primary">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <div>Wave</div>
+                                <small class="text-muted">Paiement mobile instantané</small>
+                            </div>
+                        </label>
+                        
+                        <!-- SYSTÈME DE PAIEMENT ORANGE MONEY -->
+                        <label class="payment-method" for="payment-orange">
+                            <input type="radio" id="payment-orange" name="paymentMethod" value="orange">
+                            <div class="payment-method-icon text-warning">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <div>Orange Money</div>
+                                <small class="text-muted">Paiement mobile sécurisé</small>
+                            </div>
+                        </label>
+                        
+                        <!-- SYSTÈME DE PAIEMENT FREE MONEY -->
+                        <label class="payment-method" for="payment-free">
+                            <input type="radio" id="payment-free" name="paymentMethod" value="free">
+                            <div class="payment-method-icon text-info">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <div>Free Money</div>
+                                <small class="text-muted">Paiement mobile rapide</small>
+                            </div>
+                        </label>
+                        
+                        <!-- SYSTÈME DE PAIEMENT KPAY -->
+                        <label class="payment-method" for="payment-kpay">
+                            <input type="radio" id="payment-kpay" name="paymentMethod" value="kpay">
+                            <div class="payment-method-icon" style="color: #FF6B00;">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div>
+                                <div>Kpay</div>
+                                <small class="text-muted">Paiement mobile sécurisé</small>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Détails du paiement Wave -->
+                    <div class="payment-details" id="wave-details">
+                        <p class="payment-info">Pour payer avec Wave, veuillez envoyer le montant de <strong id="wave-amount">0 FCFA</strong> au numéro:</p>
+                        <p class="text-center fw-bold">+221 78 123 45 67</p>
+                        <p class="payment-info">Indiquez votre nom dans la référence du paiement.</p>
+                    </div>
+                    
+                    <!-- Détails du paiement Orange Money -->
+                    <div class="payment-details" id="orange-details">
+                        <p class="payment-info">Pour payer avec Orange Money, veuillez envoyer le montant de <strong id="orange-amount">0 FCFA</strong> au numéro:</p>
+                        <p class="text-center fw-bold">+221 77 123 45 67</p>
+                        <p class="payment-info">Indiquez votre nom dans la référence du paiement.</p>
+                    </div>
+                    
+                    <!-- Détails du paiement Free Money -->
+                    <div class="payment-details" id="free-details">
+                        <p class="payment-info">Pour payer avec Free Money, veuillez envoyer le montant de <strong id="free-amount">0 FCFA</strong> au numéro:</p>
+                        <p class="text-center fw-bold">+221 76 123 45 67</p>
+                        <p class="payment-info">Indiquez votre nom dans la référence du paiement.</p>
+                    </div>
+                    
+                    <!-- Détails du paiement Kpay -->
+                    <div class="payment-details" id="kpay-details">
+                        <p class="payment-info">Pour payer avec Kpay, veuillez envoyer le montant de <strong id="kpay-amount">0 FCFA</strong> au numéro:</p>
+                        <p class="text-center fw-bold">+221 70 123 45 67</p>
+                        <p class="payment-info">Indiquez votre nom dans la référence du paiement.</p>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-success" id="submitOrderBtn">
+                        <i class="fas fa-check-circle me-1"></i>Finaliser la commande
+                    </button>
+                    <button type="button" class="btn btn-outline-dark" onclick="closeOrderModal()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenu de la page Produits -->
+    <div class="page-produits">
+        <div class="products-hero">
+            <div class="container">
+                <h1 class="display-4 fw-bold animate-on-scroll">Notre Collection</h1>
+                <p class="lead animate-on-scroll" data-delay="200">Découvrez plus de 30 modèles exclusifs</p>
+            </div>
+        </div>
+        
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Sidebar Filtres -->
+                    <div class="col-md-3">
+                        <div class="filter-sidebar animate-on-scroll">
+                            <h5>Filtres</h5>
+                            
+                            <div class="mb-4">
+                                <h6>Prix</h6>
+                                <div class="price-filter">
+                                    <input type="range" class="form-range" min="0" max="100000" step="5000" id="priceRange">
+                                    <div class="d-flex justify-content-between">
+                                        <span>0 FCFA</span>
+                                        <span id="priceValue">100,000 FCFA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Taille</h6>
+                                <div class="size-filter">
+                                    <div class="btn-group" role="group">
+                                        <input type="radio" class="btn-check" name="size" id="size-all" checked>
+                                        <label class="btn btn-outline-dark" for="size-all">Toutes</label>
+                                        
+                                        <input type="radio" class="btn-check" name="size" id="size-36">
+                                        <label class="btn btn-outline-dark" for="size-36">36</label>
+                                        
+                                        <input type="radio" class="btn-check" name="size" id="size-38">
+                                        <label class="btn btn-outline-dark" for="size-38">38</label>
+                                        
+                                        <input type="radio" class="btn-check" name="size" id="size-40">
+                                        <label class="btn btn-outline-dark" for="size-40">40</label>
+                                        
+                                        <input type="radio" class="btn-check" name="size" id="size-42">
+                                        <label class="btn btn-outline-dark" for="size-42">42</label>
+                                        
+                                        <input type="radio" class="btn-check" name="size" id="size-44">
+                                        <label class="btn btn-outline-dark" for="size-44">44</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Tri</h6>
+                                <select class="form-select" id="sortSelect">
+                                    <option value="default">Par défaut</option>
+                                    <option value="price-asc">Prix croissant</option>
+                                    <option value="price-desc">Prix décroissant</option>
+                                    <option value="name">Nom A-Z</option>
+                                    <option value="newest">Nouveautés</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn-gold w-100" id="resetFilters">
+                                <i class="fas fa-redo me-2"></i>Réinitialiser
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Produits -->
+                    <div class="col-md-9">
+                        <div class="search-filter-bar animate-on-scroll" data-delay="200">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 id="productsCount">Tous nos produits</h4>
+                                <div class="input-group w-25">
+                                    <input type="text" class="form-control" placeholder="Rechercher..." id="searchInput">
+                                    <button class="btn btn-gold" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="productsGrid">
+                            <!-- Produits chargés dynamiquement -->
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation" class="mt-5">
+                            <ul class="pagination justify-content-center" id="pagination">
+                                <!-- Pagination will be added here dynamically -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade quick-view-modal" id="quickViewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickViewTitle">Détails du produit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="quickViewContent">
+                    <!-- Quick view content will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Annuler
+                    </button>
+                    <button type="button" class="btn btn-gold" onclick="ajouterAuPanier(currentProductId)">
+                        <i class="fas fa-cart-plus me-2"></i>Ajouter au panier
+                    </button>
+                    <button type="button" class="btn btn-whatsapp" onclick="commanderProduitDirect(currentProductId)">
+                        <i class="fab fa-whatsapp me-2"></i>Commander directement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-shoe-prints me-2"></i>DaleuuYuRafett</h5>
+                    <p>Votre boutique de chaussures de confiance à Saint-Louis, Sénégal.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/221781980844" class="text-light me-3"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Accueil</a></li>
+                        <li><a href="about.html" class="text-light">À propos</a></li>
+                        <li><a href="products.html" class="text-light">Produits</a></li>
+                        <li><a href="contact.html" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                    <p><i class="fas fa-phone"></i> 781980844</p>
+                    <p><i class="fas fa-envelope"></i> info@daleuuyurafett.sn</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 DaleuuYuRafett. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Produit ajouté au panier avec succès!</span>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Products data - Collection étendue
+        const products = [
+            {
+                id: 1,
+                name: "Baskets Classiques Noir",
+                category: "baskets",
+                price: 25000,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Nouveau",
+                sizes: [36, 38, 40, 42],
+                description: "Baskets élégantes en cuir véritable, parfaites pour un usage quotidien. Confort optimal et style intemporel."
+            },
+            {
+                id: 2,
+                name: "Sandales Élégantes Dorées",
+                category: "sandales",
+                price: 18000,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Populaire",
+                sizes: [36, 38, 40],
+                description: "Sandales confortables avec finitions dorées, idéales pour l'été. Semelle souple et design raffiné."
+            },
+            {
+                id: 3,
+                name: "Chaussures de Sport Performance",
+                category: "sport",
+                price: 32000,
+                image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Bestseller",
+                sizes: [40, 42, 44],
+                description: "Chaussures de sport haute performance avec amorti optimal. Parfaites pour le running et le fitness."
+            },
+            {
+                id: 4,
+                name: "Escarpins Modernes Noir",
+                category: "escarpins",
+                price: 22000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Édition limitée",
+                sizes: [36, 38, 40],
+                description: "Escarpins élégants pour occasions spéciales. Talon confortable et finition premium."
+            },
+            {
+                id: 5,
+                name: "Bottines Cuir Marron",
+                category: "bottines",
+                price: 28000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Nouveau",
+                sizes: [38, 40, 42],
+                description: "Bottines en cuir véritable, style classique et intemporel. Idéales pour la saison fraîche."
+            },
+            {
+                id: 6,
+                name: "Tongs Confort Plage",
+                category: "tongs",
+                price: 8000,
+                image: "https://images.unsplash.com/photo-1581101767113-1677dccc1e02?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Économique",
+                sizes: [36, 38, 40, 42],
+                description: "Tongs légères et confortables pour la détente. Parfaites pour la plage et la piscine."
+            },
+            {
+                id: 7,
+                name: "Baskets Urban Blanc",
+                category: "baskets",
+                price: 27000,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Tendance",
+                sizes: [38, 40, 42, 44],
+                description: "Baskets style urbain en cuir blanc, très polyvalentes. S'adaptent à tous les styles."
+            },
+            {
+                id: 8,
+                name: "Sandales Élégantes Argent",
+                category: "sandales",
+                price: 19000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Nouveau",
+                sizes: [36, 38, 40],
+                description: "Sandales raffinées avec détails argentés. Élégance et confort pour vos sorties."
+            },
+            {
+                id: 9,
+                name: "Mocassins Cuir Noir",
+                category: "mocassins",
+                price: 23000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Classique",
+                sizes: [40, 42, 44],
+                description: "Mocassins en cuir souple, style business casual. Confort exceptionnel pour la ville."
+            },
+            {
+                id: 10,
+                name: "Derbies Marron Vintage",
+                category: "derbies",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Premium",
+                sizes: [40, 42, 44],
+                description: "Derbies en cuir pleine fleur, finition vintage. Élégance masculine intemporelle."
+            },
+            {
+                id: 11,
+                name: "Baskets Running Pro",
+                category: "sport",
+                price: 45000,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Pro",
+                sizes: [40, 42, 44],
+                description: "Baskets de running professionnelles avec technologie d'amorti avancée. Performances maximales."
+            },
+            {
+                id: 12,
+                name: "Escarpins Nude Soirée",
+                category: "escarpins",
+                price: 26000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Soirée",
+                sizes: [36, 38],
+                description: "Escarpins nude pour occasions spéciales. Talon medium et confort optimal."
+            },
+            {
+                id: 13,
+                name: "Sandales Plateforme",
+                category: "sandales",
+                price: 21000,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Tendance",
+                sizes: [36, 38, 40],
+                description: "Sandales à plateforme confortable. Style moderne et élégant pour l'été."
+            },
+            {
+                id: 14,
+                name: "Bottines Cuir Noir",
+                category: "bottines",
+                price: 32000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Urban",
+                sizes: [38, 40, 42],
+                description: "Bottines noires en cuir, style urbain et sophistiqué. Parfaites pour la ville."
+            },
+            {
+                id: 15,
+                name: "Tongs Sport Plage",
+                category: "tongs",
+                price: 12000,
+                image: "https://images.unsplash.com/photo-1581101767113-1677dccc1e02?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Sport",
+                sizes: [38, 40, 42, 44],
+                description: "Tongs sport avec semelle antidérapante. Idéales pour les activités nautiques."
+            },
+            {
+                id: 16,
+                name: "Baskets Vintage Rouge",
+                category: "baskets",
+                price: 29000,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Rétro",
+                sizes: [38, 40, 42],
+                description: "Baskets vintage couleur rouge, style rétro unique. Pour les amateurs de style."
+            },
+            {
+                id: 17,
+                name: "Mocassins Cuir Brun",
+                category: "mocassins",
+                price: 24000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Élégant",
+                sizes: [40, 42, 44],
+                description: "Mocassins en cuir brun, élégance discrète. Parfaits pour le bureau."
+            },
+            {
+                id: 18,
+                name: "Derbies Noir Cérémonie",
+                category: "derbies",
+                price: 38000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Cérémonie",
+                sizes: [40, 42, 44],
+                description: "Derbies noires pour occasions formelles. Qualité premium et finition impeccable."
+            },
+            {
+                id: 19,
+                name: "Chaussures Fitness",
+                category: "sport",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Fitness",
+                sizes: [38, 40, 42, 44],
+                description: "Chaussures spécialisées pour le fitness. Stabilité et confort optimaux."
+            },
+            {
+                id: 20,
+                name: "Escarpins Rouge Passion",
+                category: "escarpins",
+                price: 28000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Audacieux",
+                sizes: [36, 38],
+                description: "Escarpins rouge passion pour looks audacieux. Talon fin et élégant."
+            },
+            {
+                id: 21,
+                name: "Sandales Dorées Étoilées",
+                category: "sandales",
+                price: 22000,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Festival",
+                sizes: [36, 38, 40],
+                description: "Sandales dorées avec détails étoilés. Parfaites pour les festivals et soirées."
+            },
+            {
+                id: 22,
+                name: "Bottines Suédées",
+                category: "bottines",
+                price: 34000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Hiver",
+                sizes: [38, 40, 42],
+                description: "Bottines en suède, chaudes et stylées. Idéales pour l'hiver."
+            },
+            {
+                id: 23,
+                name: "Tongs Luxe Perles",
+                category: "tongs",
+                price: 15000,
+                image: "https://images.unsplash.com/photo-1581101767113-1677dccc1e02?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Luxe",
+                sizes: [36, 38, 40],
+                description: "Tongs de luxe avec ornements perles. Élégance et confort pour l'été."
+            },
+            {
+                id: 24,
+                name: "Baskets Color Block",
+                category: "baskets",
+                price: 31000,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Coloré",
+                sizes: [38, 40, 42, 44],
+                description: "Baskets color block, style moderne et dynamique. Pour les fashionistas."
+            },
+            {
+                id: 25,
+                name: "Mocassins Bleu Marine",
+                category: "mocassins",
+                price: 26000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Marin",
+                sizes: [40, 42, 44],
+                description: "Mocassins bleu marine, élégance maritime. Polyvalents et confortables."
+            },
+            {
+                id: 26,
+                name: "Derbies Deux Tons",
+                category: "derbies",
+                price: 42000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Exclusif",
+                sizes: [40, 42, 44],
+                description: "Derbies deux tons, design exclusif. Pour les hommes qui osent le style."
+            },
+            {
+                id: 27,
+                name: "Chaussures Trail",
+                category: "sport",
+                price: 48000,
+                image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Outdoor",
+                sizes: [40, 42, 44],
+                description: "Chaussures de trail techniques. Adhérence et protection optimales."
+            },
+            {
+                id: 28,
+                name: "Escarpins Noir Velours",
+                category: "escarpins",
+                price: 32000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Velours",
+                sizes: [36, 38],
+                description: "Escarpins en velours noir, luxe et sophistication. Pour soirées glamour."
+            },
+            {
+                id: 29,
+                name: "Sandales Tressées",
+                category: "sandales",
+                price: 19000,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Éthnique",
+                sizes: [36, 38, 40],
+                description: "Sandales tressées style ethnique. Confort et originalité."
+            },
+            {
+                id: 30,
+                name: "Bottines Punk",
+                category: "bottines",
+                price: 36000,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "Rock",
+                sizes: [38, 40, 42],
+                description: "Bottines style punk avec détails métal. Pour un look rebelle et stylé."
+            }
+        ];
+
+        // Variables globales
+        let cart = [];
+        let cartCount = 0;
+        let cartTotal = 0;
+        let filteredProducts = [...products];
+        let currentPage = 1;
+        const productsPerPage = 12;
+        let currentProductId = null;
+
+        // DOM Elements
+        const cartButton = document.getElementById('cartButton');
+        const cartCountElement = document.getElementById('cartCount');
+        const quickCart = document.getElementById('quickCart');
+        const cartItemsElement = document.getElementById('cartItems');
+        const cartTotalElement = document.getElementById('cartTotal');
+        const themeToggle = document.getElementById('themeToggle');
+        const productsGrid = document.getElementById('productsGrid');
+        const productsCount = document.getElementById('productsCount');
+        const searchInput = document.getElementById('searchInput');
+        const priceRange = document.getElementById('priceRange');
+        const priceValue = document.getElementById('priceValue');
+        const sortSelect = document.getElementById('sortSelect');
+        const sizeFilters = document.querySelectorAll('input[name="size"]');
+        const resetFilters = document.getElementById('resetFilters');
+        const pagination = document.getElementById('pagination');
+        const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const orderModal = document.getElementById('orderModal');
+        const orderForm = document.getElementById('orderForm');
+        const orderSummaryItems = document.getElementById('orderSummaryItems');
+        const orderSummaryTotal = document.getElementById('orderSummaryTotal');
+
+        // WhatsApp number
+        const whatsappNumber = "221781980844";
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load products
+            displayProducts();
+            
+            // Initialize animations
+            initAnimations();
+            
+            // Initialize cart from localStorage if available
+            const savedCart = localStorage.getItem('daleuuyurafett_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+            
+            // Initialize theme from localStorage if available
+            const savedTheme = localStorage.getItem('daleuuyurafett_theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Add payment method change listeners
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', handlePaymentMethodChange);
+            });
+            
+            // Add form submit event listener
+            orderForm.addEventListener('submit', processOrder);
+        });
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Search functionality
+            searchInput.addEventListener('input', filterProducts);
+            
+            // Price range filter
+            priceRange.addEventListener('input', function() {
+                priceValue.textContent = `${parseInt(this.value).toLocaleString()} FCFA`;
+                filterProducts();
+            });
+            
+            // Size filters
+            sizeFilters.forEach(radio => {
+                radio.addEventListener('change', filterProducts);
+            });
+            
+            // Sort functionality
+            sortSelect.addEventListener('change', filterProducts);
+            
+            // Reset filters
+            resetFilters.addEventListener('click', resetAllFilters);
+            
+            // Cart functionality
+            cartButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                quickCart.classList.toggle('show');
+            });
+
+            // Close quick cart when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!cartButton.contains(e.target) && !quickCart.contains(e.target)) {
+                    quickCart.classList.remove('show');
+                }
+            });
+        }
+
+        // Filter products based on all criteria
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const maxPrice = parseInt(priceRange.value);
+            const selectedSize = document.querySelector('input[name="size"]:checked').value;
+            const sortBy = sortSelect.value;
+            
+            filteredProducts = products.filter(product => {
+                // Search filter
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                
+                // Price filter
+                const matchesPrice = product.price <= maxPrice;
+                
+                // Size filter
+                const matchesSize = selectedSize === 'all' || product.sizes.includes(parseInt(selectedSize));
+                
+                return matchesSearch && matchesPrice && matchesSize;
+            });
+            
+            // Sort products
+            sortProducts(sortBy);
+            
+            // Reset to first page
+            currentPage = 1;
+            
+            // Update display
+            displayProducts();
+            updateProductsCount();
+        }
+
+        // Sort products
+        function sortProducts(sortBy) {
+            switch(sortBy) {
+                case 'price-asc':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'newest':
+                    // Assuming newer products have higher IDs
+                    filteredProducts.sort((a, b) => b.id - a.id);
+                    break;
+                default:
+                    // Default sorting (by ID)
+                    filteredProducts.sort((a, b) => a.id - b.id);
+            }
+        }
+
+        // Reset all filters
+        function resetAllFilters() {
+            searchInput.value = '';
+            priceRange.value = 100000;
+            priceValue.textContent = '100,000 FCFA';
+            document.getElementById('size-all').checked = true;
+            sortSelect.value = 'default';
+            
+            filteredProducts = [...products];
+            currentPage = 1;
+            displayProducts();
+            updateProductsCount();
+        }
+
+        // Display products with pagination
+        function displayProducts() {
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            let productsHTML = '';
+            
+            if (productsToShow.length === 0) {
+                productsHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h4>Aucun produit trouvé</h4>
+                        <p class="text-muted">Essayez de modifier vos critères de recherche</p>
+                        <button class="btn btn-gold mt-3" onclick="resetAllFilters()">
+                            Réinitialiser les filtres
+                        </button>
+                    </div>
+                `;
+            } else {
+                productsToShow.forEach(product => {
+                    productsHTML += `
+                        <div class="col-md-6 col-lg-4 animate-on-scroll">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="${product.image}" alt="${product.name}">
+                                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                                </div>
+                                <div class="product-info">
+                                    <h5 class="product-title">${product.name}</h5>
+                                    <div class="product-category">${getCategoryName(product.category)}</div>
+                                    <div class="product-price">${product.price.toLocaleString()} FCFA</div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-outline-dark btn-sm" onclick="quickView(${product.id})">
+                                            <i class="fas fa-eye me-1"></i> Voir
+                                        </button>
+                                        <button class="btn btn-gold btn-sm" onclick="ajouterAuPanier(${product.id})">
+                                            <i class="fas fa-cart-plus me-1"></i> Panier
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            productsGrid.innerHTML = productsHTML;
+            updatePagination();
+            initAnimations(); // Re-initialize animations for new products
+        }
+
+        // Get category name in French
+        function getCategoryName(category) {
+            const categories = {
+                'baskets': 'Baskets',
+                'sandales': 'Sandales',
+                'sport': 'Chaussures de Sport',
+                'escarpins': 'Escarpins',
+                'bottines': 'Bottines',
+                'tongs': 'Tongs',
+                'mocassins': 'Mocassins',
+                'derbies': 'Derbies'
+            };
+            return categories[category] || category;
+        }
+
+        // Update products count
+        function updateProductsCount() {
+            const count = filteredProducts.length;
+            productsCount.textContent = `${count} produit${count !== 1 ? 's' : ''} trouvé${count !== 1 ? 's' : ''}`;
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            let paginationHTML = '';
+            
+            if (totalPages > 1) {
+                // Previous button
+                paginationHTML += `
+                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                `;
+                
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        </li>
+                    `;
+                }
+                
+                // Next button
+                paginationHTML += `
+                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                `;
+            }
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // Change page
+        function changePage(page) {
+            currentPage = page;
+            displayProducts();
+            window.scrollTo({ top: productsGrid.offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // Quick view product
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                currentProductId = productId;
+                document.getElementById('quickViewTitle').textContent = product.name;
+                document.getElementById('quickViewContent').innerHTML = `
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="${product.image}" alt="${product.name}" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>${product.name}</h4>
+                            <p class="text-gold fs-3">${product.price.toLocaleString()} FCFA</p>
+                            <p>${product.description}</p>
+                            <div class="mb-3">
+                                <strong>Tailles disponibles:</strong>
+                                <div class="mt-2">
+                                    ${product.sizes.map(size => `
+                                        <span class="badge bg-secondary me-2">${size}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                quickViewModal.show();
+            }
+        }
+
+        // Ajouter un produit au panier
+        function ajouterAuPanier(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            if (product) {
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                    showNotification('success', 'Quantité mise à jour dans le panier');
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                    showNotification('success', 'Produit ajouté au panier avec succès!');
+                }
+                
+                updateCart();
+                
+                // Save cart to localStorage
+                localStorage.setItem('daleuuyurafett_cart', JSON.stringify(cart));
+                
+                // Close quick view modal if open
+                if (quickViewModal._isShown) {
+                    quickViewModal.hide();
+                }
+            }
+        }
+
+        // SUPPRESSION PAR ÉLÉMENT - Fonction pour retirer un produit du panier
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            showNotification('warning', 'Produit retiré du panier');
+            
+            // Save cart to localStorage
+            localStorage.setItem('daleuuyurafett_cart', JSON.stringify(cart));
+            
+            // Close cart if empty
+            if (cart.length === 0) {
+                setTimeout(() => {
+                    quickCart.classList.remove('show');
+                }, 1000);
+            }
+        }
+
+        // Update product quantity in cart
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += change;
+                
+                // Remove item if quantity becomes 0
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                    return;
+                }
+                
+                updateCart();
+                
+                // Save cart to localStorage
+                localStorage.setItem('daleuuyurafett_cart', JSON.stringify(cart));
+            }
+        }
+
+        // Update cart UI
+        function updateCart() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            cartCountElement.textContent = cartCount;
+            cartTotalElement.textContent = `${cartTotal.toLocaleString()} FCFA`;
+            
+            // Update cart items in quick cart
+            let cartItemsHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    cartItemsHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} FCFA</div>
+                                <div class="cart-item-controls">
+                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                    <span class="quantity-display">${item.quantity}</span>
+                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                    <!-- BOUTON DE SUPPRESSION INDIVIDUELLE -->
+                                    <button class="remove-item" onclick="removeFromCart(${item.id})" title="Supprimer cet article">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            cartItemsElement.innerHTML = cartItemsHTML;
+        }
+
+        // Update order summary
+        function updateOrderSummary() {
+            let summaryHTML = '';
+            
+            cart.forEach(item => {
+                summaryHTML += `
+                    <div class="summary-item">
+                        <span>${item.name} (x${item.quantity})</span>
+                        <span>${(item.price * item.quantity).toLocaleString()} FCFA</span>
+                    </div>
+                `;
+            });
+            
+            orderSummaryItems.innerHTML = summaryHTML;
+            orderSummaryTotal.textContent = `${cartTotal.toLocaleString()} FCFA`;
+            
+            // Update payment amounts
+            document.getElementById('wave-amount').textContent = `${cartTotal.toLocaleString()} FCFA`;
+            document.getElementById('orange-amount').textContent = `${cartTotal.toLocaleString()} FCFA`;
+            document.getElementById('free-amount').textContent = `${cartTotal.toLocaleString()} FCFA`;
+            document.getElementById('kpay-amount').textContent = `${cartTotal.toLocaleString()} FCFA`;
+        }
+
+        // Show notification
+        function showNotification(type, message) {
+            notificationText.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type, 'show');
+            
+            // Update icon based on type
+            const icon = notification.querySelector('i');
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle';
+            } else if (type === 'warning') {
+                icon.className = 'fas fa-exclamation-triangle';
+            }
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Close quick cart
+        function closeCart() {
+            quickCart.classList.remove('show');
+        }
+
+        // Open order modal avec méthode de paiement présélectionnée
+        function openOrderModal(paymentMethod = 'whatsapp') {
+            if (cart.length === 0) {
+                showNotification('warning', 'Votre panier est vide');
+                return;
+            }
+            updateOrderSummary();
+            
+            // Sélectionner la méthode de paiement
+            document.getElementById(`payment-${paymentMethod}`).checked = true;
+            handlePaymentMethodChange({ target: document.getElementById(`payment-${paymentMethod}`) });
+            
+            orderModal.classList.add('show');
+        }
+
+        // Close order modal
+        function closeOrderModal() {
+            orderModal.classList.remove('show');
+        }
+
+        // Handle payment method change
+        function handlePaymentMethodChange(e) {
+            // Hide all payment details
+            document.querySelectorAll('.payment-details').forEach(detail => {
+                detail.classList.remove('show');
+            });
+            
+            // Show selected payment method details
+            const selectedMethod = e.target.value;
+            if (selectedMethod !== 'whatsapp') {
+                document.getElementById(`${selectedMethod}-details`).classList.add('show');
+            }
+            
+            // Update selected state for payment methods
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.classList.remove('selected');
+            });
+            e.target.closest('.payment-method').classList.add('selected');
+        }
+
+        // PROCESS ORDER - Gestion complète de la commande
+        function processOrder(e) {
+            e.preventDefault();
+            
+            const customerName = document.getElementById('customerName').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            const customerNotes = document.getElementById('customerNotes').value;
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // GÉNÉRATION AUTOMATIQUE DU MESSAGE WHATSAPP
+            let orderDetails = `Nouvelle commande - DaleuuYuRafett\n\n`;
+            orderDetails += `Client: ${customerName}\n`;
+            orderDetails += `Téléphone: ${customerPhone}\n`;
+            orderDetails += `Adresse: ${customerAddress}\n`;
+            orderDetails += `Méthode de paiement: ${getPaymentMethodName(paymentMethod)}\n`;
+            if (customerNotes) {
+                orderDetails += `Notes: ${customerNotes}\n`;
+            }
+            orderDetails += `\nDétails de la commande:\n`;
+            
+            cart.forEach(item => {
+                orderDetails += `- ${item.name} (x${item.quantity}) - ${(item.price * item.quantity).toLocaleString()} FCFA\n`;
+            });
+            
+            orderDetails += `\nTotal: ${cartTotal.toLocaleString()} FCFA`;
+            orderDetails += `\n\nDate: ${new Date().toLocaleString('fr-FR')}`;
+            
+            // SAUVEGARDE DE LA COMMANDE POUR L'ADMIN
+            const order = {
+                id: Date.now(),
+                customerName,
+                customerPhone,
+                customerAddress,
+                customerNotes,
+                paymentMethod,
+                items: [...cart],
+                total: cartTotal,
+                date: new Date().toISOString(),
+                status: paymentMethod === 'whatsapp' ? 'En attente de confirmation' : 'En attente de paiement'
+            };
+            
+            saveOrder(order);
+            
+            // GESTION DES DIFFÉRENTES MÉTHODES DE PAIEMENT
+            if (paymentMethod === 'whatsapp') {
+                // SYSTÈME DE COMMANDE WHATSAPP
+                const encodedMessage = encodeURIComponent(orderDetails);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // REDIRECTION VERS WHATSAPP
+                window.open(whatsappUrl, '_blank');
+                
+                showNotification('success', 'Commande envoyée avec succès! Vérifiez WhatsApp.');
+            } else {
+                // PAIEMENTS MOBILE MONEY
+                showNotification('success', `Instructions de paiement ${getPaymentMethodName(paymentMethod)} envoyées!`);
+                
+                setTimeout(() => {
+                    alert(`Veuillez effectuer le paiement de ${cartTotal.toLocaleString()} FCFA via ${getPaymentMethodName(paymentMethod)} selon les instructions affichées.`);
+                }, 500);
+            }
+            
+            // VIDAGE AUTOMATIQUE DU PANIER APRÈS COMMANDE
+            cart = [];
+            updateCart();
+            localStorage.setItem('daleuuyurafett_cart', JSON.stringify(cart));
+            
+            // Close modal
+            closeOrderModal();
+        }
+
+        // Get payment method name
+        function getPaymentMethodName(method) {
+            switch(method) {
+                case 'whatsapp': return 'WhatsApp';
+                case 'wave': return 'Wave';
+                case 'orange': return 'Orange Money';
+                case 'free': return 'Free Money';
+                case 'kpay': return 'Kpay';
+                default: return 'Inconnu';
+            }
+        }
+
+        // SAUVEGARDE DES COMMANDES POUR L'ADMIN
+        function saveOrder(order) {
+            let orders = JSON.parse(localStorage.getItem('daleuuyurafett_orders')) || [];
+            orders.push(order);
+            localStorage.setItem('daleuuyurafett_orders', JSON.stringify(orders));
+            
+            // Afficher une notification pour l'admin
+            showNotification('success', 'Commande enregistrée dans le tableau de bord!');
+        }
+
+        // Vider le panier
+        function viderPanier() {
+            cart = [];
+            updateCart();
+            localStorage.removeItem('daleuuyurafett_cart');
+            quickCart.classList.remove('show');
+            showNotification('warning', 'Panier vidé!');
+        }
+
+        // Commander directement un produit
+        function commanderProduitDirect(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const message = `🛍️ COMMANDE DIRECTE - DaleuuYuRafett\n\n` +
+                               `📦 PRODUIT: ${product.name}\n` +
+                               `💰 PRIX: ${product.price.toLocaleString()} FCFA\n` +
+                               `📝 DESCRIPTION: ${product.description}\n\n` +
+                               `Bonjour! Je suis intéressé(e) par ce produit. Pouvez-vous me donner plus d'informations ?`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                window.open(whatsappURL, '_blank');
+                quickViewModal.hide();
+                showNotification('success', 'Redirection vers WhatsApp...');
+            }
+        }
+
+        // Toggle dark mode
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('daleuuyurafett_theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('daleuuyurafett_theme', 'light');
+            }
+        });
+
+        // Initialize animations on scroll
+        function initAnimations() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay') || 0;
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+    </script>
+</body>
+</html>

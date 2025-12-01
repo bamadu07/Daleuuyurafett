@@ -1,0 +1,451 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --accent-color: #333333;
+    --gold-color: #D4AF37;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+}
+
+.bg-dark-custom {
+    background-color: var(--primary-color) !important;
+}
+
+.text-light-custom {
+    color: var(--secondary-color) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--gold-color) !important;
+}
+
+/* ========== PAGE ACCUEIL ========== */
+.page-accueil .hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 90vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-accueil .floating-shoe {
+    position: absolute;
+    width: 200px;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+}
+
+.page-accueil .floating-shoe:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.page-accueil .floating-shoe:nth-child(2) {
+    top: 20%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.page-accueil .floating-shoe:nth-child(3) {
+    bottom: 15%;
+    left: 15%;
+    animation-delay: 4s;
+}
+
+.page-accueil .featured-products {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+.page-accueil .stats-counter {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 80px 0;
+    position: relative;
+}
+
+.page-accueil .stats-counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold-color), var(--primary-color), var(--gold-color));
+}
+
+/* ========== PAGE À PROPOS ========== */
+.page-apropos .about-hero {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.page-apropos .timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.page-apropos .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gold-color);
+    transform: translateX(-50%);
+}
+
+.page-apropos .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.page-apropos .timeline-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    width: 45%;
+}
+
+.page-apropos .timeline-item:nth-child(odd) .timeline-content {
+    margin-left: auto;
+}
+
+.page-apropos .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--gold-color);
+    border-radius: 50%;
+}
+
+.page-apropos .timeline-item:nth-child(even) .timeline-content::after {
+    right: -60px;
+}
+
+.page-apropos .timeline-item:nth-child(odd) .timeline-content::after {
+    left: -60px;
+}
+
+/* ========== PAGE PRODUITS ========== */
+.page-produits .products-hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.page-produits .filter-sidebar {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.page-produits .price-filter .form-range {
+    width: 100%;
+}
+
+.page-produits .category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.page-produits .category-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-produits .category-list li:hover {
+    color: var(--gold-color);
+    padding-left: 10px;
+}
+
+.page-produits .category-list li.active {
+    color: var(--gold-color);
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+/* ========== PAGE CONTACT ========== */
+.page-contact .contact-hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.page-contact .contact-info-card {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 40px;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.page-contact .contact-form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.page-contact .map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+    margin-top: 30px;
+}
+
+/* ========== PAGE ADMIN ========== */
+.page-admin {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.page-admin .sidebar {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    min-height: 100vh;
+    position: relative;
+}
+
+.page-admin .sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold-color), var(--primary-color), var(--gold-color));
+}
+
+.page-admin .admin-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.page-admin .stat-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.page-admin .stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ========== STYLES COMMUNS ========== */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.1);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--gold-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.btn-custom {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 600;
+}
+
+.btn-custom:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn-gold {
+    background-color: var(--gold-color);
+    color: var(--primary-color);
+    border: 2px solid var(--gold-color);
+}
+
+.btn-gold:hover {
+    background-color: transparent;
+    color: var(--gold-color);
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold-color), var(--primary-color), var(--gold-color));
+}
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 15px;
+}
+
+.table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+.dark-mode {
+    --primary-color: #ffffff;
+    --secondary-color: #121212;
+    --accent-color: #2a2a2a;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(30deg);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: var(--gold-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 9999;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.nav-link.active {
+    color: var(--gold-color) !important;
+    font-weight: bold;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@media (max-width: 768px) {
+    .page-accueil .hero-section,
+    .page-apropos .about-hero,
+    .page-produits .products-hero,
+    .page-contact .contact-hero {
+        height: 60vh;
+        background-attachment: scroll;
+    }
+    
+    .page-apropos .timeline::before {
+        left: 20px;
+    }
+    
+    .page-apropos .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+    
+    .page-apropos .timeline-content::after {
+        left: -50px !important;
+    }
+}

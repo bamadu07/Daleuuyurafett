@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaleuuYuRafett - Administration</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #333333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --gold-color: #d4af37;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        /* Login Page Styles */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1549298916-b41d501d3772') center/cover;
+            opacity: 0.1;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark-mode .login-card {
+            background: rgba(51, 51, 51, 0.95);
+            color: white;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo i {
+            font-size: 4rem;
+            color: var(--gold-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold-color), #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .password-input-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dark-gray);
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--gold-color);
+        }
+
+        .login-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--gold-color);
+            text-align: center;
+        }
+
+        body.dark-mode .login-info {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+        }
+
+        /* Admin Layout */
+        .admin-sidebar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            min-height: 100vh;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .admin-sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            margin: 5px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-sidebar .nav-link:hover,
+        .admin-sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .admin-main {
+            padding: 20px;
+            background-color: var(--light-gray);
+            min-height: 100vh;
+        }
+
+        body.dark-mode .admin-main {
+            background-color: #1a1a1a;
+        }
+
+        /* Header */
+        .admin-header {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--gold-color);
+        }
+
+        body.dark-mode .admin-header {
+            background: var(--accent-color);
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        body.dark-mode .card {
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+            background: var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card {
+            border-left: 5px solid var(--gold-color) !important;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--gold-color), #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tables */
+        .table th {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 15px;
+            font-weight: 600;
+        }
+
+        .table td {
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+
+        /* Badges */
+        .badge {
+            font-size: 0.75em;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .badge-success { background: var(--success-color); }
+        .badge-warning { background: var(--warning-color); color: #000; }
+        .badge-danger { background: var(--danger-color); }
+        .badge-info { background: var(--info-color); }
+
+        /* Activity Feed */
+        .activity-feed {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-color), #f4d03f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Notifications */
+        .notification-badge {
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+        }
+
+        /* Quick Actions */
+        .quick-action-btn {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        body.dark-mode .quick-action-btn {
+            background: var(--accent-color);
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+        }
+
+        /* Message Cards */
+        .message-card {
+            border-left: 4px solid var(--gold-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .message-card.unread {
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+
+        .message-card:hover {
+            transform: translateX(5px);
+        }
+
+        /* Order Status */
+        .order-status-pending { background-color: var(--warning-color); color: #000; }
+        .order-status-confirmed { background-color: var(--info-color); color: #fff; }
+        .order-status-shipped { background-color: var(--primary-color); color: #fff; }
+        .order-status-delivered { background-color: var(--success-color); color: #fff; }
+        .order-status-cancelled { background-color: var(--danger-color); color: #fff; }
+
+        /* Stock Status */
+        .stock-status-high { background-color: var(--success-color); color: #fff; }
+        .stock-status-medium { background-color: var(--warning-color); color: #000; }
+        .stock-status-low { background-color: var(--danger-color); color: #fff; }
+
+        /* Loading */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--gold-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Reply Form */
+        .reply-form {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        body.dark-mode .reply-form {
+            background: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page de connexion -->
+    <div id="loginPage" class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <i class="fas fa-shoe-prints"></i>
+                <h2>DaleuuYuRafett</h2>
+                <p class="text-muted">Administration</p>
+            </div>
+
+            <div class="login-info">
+                <h6 class="mb-3"><i class="fas fa-shield-alt me-2"></i>Accès Administrateur</h6>
+                <p class="info-text">Veuillez saisir vos identifiants administrateur</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label">Adresse Email</label>
+                    <input type="email" class="form-control" id="email" required placeholder="admin@daleuuyurafett.sn">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mot de passe</label>
+                    <div class="password-input-group">
+                        <input type="password" class="form-control" id="password" required placeholder="Votre mot de passe">
+                        <span class="password-toggle" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                </div>
+                <button type="submit" class="btn btn-custom w-100" id="loginButton">
+                    <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Page d'administration -->
+    <div id="adminPage" style="display: none;">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2 admin-sidebar">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-4">
+                        <!-- Logo -->
+                        <div class="d-flex align-items-center pb-3 mb-4 border-bottom w-100">
+                            <i class="fas fa-shoe-prints fa-2x me-2" style="color: var(--gold-color);"></i>
+                            <span class="fs-5 fw-bold">DaleuuYuRafett</span>
+                        </div>
+
+                        <!-- Navigation -->
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100" id="adminMenu">
+                            <li class="nav-item w-100">
+                                <a href="#dashboard" class="nav-link active" onclick="switchToTab('dashboard')">
+                                    <i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord
+                                </a>
+                            </li>
+                            <li class="nav-item w-100">
+                                <a href="#stock" class="nav-link" onclick="switchToTab('stock')">
+                                    <i class="fas fa-boxes me-2"></i>Gestion du Stock
+                                    <span class="notification-badge" id="stockBadge">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100">
+                                <a href="#orders" class="nav-link" onclick="switchToTab('orders')">
+                                    <i class="fas fa-clipboard-list me-2"></i>Commandes
+                                    <span class="notification-badge" id="ordersBadge">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100">
+                                <a href="#customers" class="nav-link" onclick="switchToTab('customers')">
+                                    <i class="fas fa-users me-2"></i>Clients
+                                    <span class="notification-badge" id="customersBadge">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100">
+                                <a href="#messages" class="nav-link" onclick="switchToTab('messages')">
+                                    <i class="fas fa-envelope me-2"></i>Messages
+                                    <span class="notification-badge" id="messagesBadge">0</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- User Info -->
+                        <div class="dropdown mt-auto pb-4 border-top w-100 pt-4">
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=000000&color=ffffff" alt="Admin" width="32" height="32" class="rounded-circle me-2">
+                                <span class="d-none d-sm-inline">Administrateur</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9 col-lg-10 admin-main">
+                    <!-- Dashboard Tab -->
+                    <div id="dashboard" class="tab-content active">
+                        <div class="admin-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h1 class="h2 mb-1"><i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord</h1>
+                                    <p class="text-muted mb-0">Vue d'ensemble de votre boutique</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-outline-custom" onclick="refreshDashboard()">
+                                        <i class="fas fa-sync-alt me-1"></i> Actualiser
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistiques -->
+                        <div class="row mb-4">
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <div class="text-muted">Chiffre d'Affaires</div>
+                                                <div class="stat-number" id="dashboardRevenue">0 FCFA</div>
+                                            </div>
+                                            <div class="text-success">
+                                                <i class="fas fa-money-bill-wave fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <div class="text-muted">Commandes</div>
+                                                <div class="stat-number" id="dashboardOrders">0</div>
+                                            </div>
+                                            <div class="text-info">
+                                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <div class="text-muted">Messages</div>
+                                                <div class="stat-number" id="dashboardMessages">0</div>
+                                            </div>
+                                            <div class="text-warning">
+                                                <i class="fas fa-envelope fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <div class="text-muted">Produits en Stock</div>
+                                                <div class="stat-number" id="dashboardStock">0</div>
+                                            </div>
+                                            <div class="text-danger">
+                                                <i class="fas fa-boxes fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Activité Récente -->
+                            <div class="col-lg-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-history me-2"></i>Activité Récente</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="activity-feed" id="recentActivity">
+                                            <!-- Activité chargée dynamiquement -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actions Rapides -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Actions Rapides</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-6">
+                                                <button class="btn quick-action-btn w-100" onclick="switchToTab('orders')">
+                                                    <i class="fas fa-clipboard-list"></i>
+                                                    <div class="small mt-1">Voir Commandes</div>
+                                                </button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn quick-action-btn w-100" onclick="switchToTab('messages')">
+                                                    <i class="fas fa-envelope"></i>
+                                                    <div class="small mt-1">Voir Messages</div>
+                                                </button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn quick-action-btn w-100" onclick="switchToTab('stock')">
+                                                    <i class="fas fa-boxes"></i>
+                                                    <div class="small mt-1">Gérer Stock</div>
+                                                </button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn quick-action-btn w-100" onclick="exportData()">
+                                                    <i class="fas fa-download"></i>
+                                                    <div class="small mt-1">Exporter</div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stock Tab -->
+                    <div id="stock" class="tab-content" style="display: none;">
+                        <div class="admin-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h1 class="h2 mb-0">Gestion du Stock</h1>
+                                    <p class="text-muted mb-0">Gérez votre inventaire de produits</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-custom" onclick="addNewProduct()">
+                                        <i class="fas fa-plus me-1"></i> Nouveau Produit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Produit</th>
+                                                <th>Catégorie</th>
+                                                <th>Prix</th>
+                                                <th>Stock</th>
+                                                <th>Statut</th>
+                                                <th>Ventes</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="stockTableBody">
+                                            <!-- Stock chargé dynamiquement -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div id="orders" class="tab-content" style="display: none;">
+                        <div class="admin-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h1 class="h2 mb-0">Toutes les Commandes</h1>
+                                    <p class="text-muted mb-0">Commandes provenant de products.html</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-custom" onclick="loadOrdersFromStorage()">
+                                        <i class="fas fa-sync-alt me-1"></i> Actualiser
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Commande</th>
+                                                <th>Client</th>
+                                                <th>Email</th>
+                                                <th>Téléphone</th>
+                                                <th>Produits</th>
+                                                <th>Quantité</th>
+                                                <th>Total</th>
+                                                <th>Date</th>
+                                                <th>Statut</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ordersTableBody">
+                                            <!-- Commandes chargées dynamiquement -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="ordersEmptyState" class="text-center py-5" style="display: none;">
+                                    <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucune commande trouvée</h5>
+                                    <p class="text-muted">Les commandes de products.html apparaîtront ici</p>
+                                    <button class="btn btn-custom" onclick="loadOrdersFromStorage()">
+                                        <i class="fas fa-sync-alt me-1"></i> Vérifier à nouveau
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customers Tab -->
+                    <div id="customers" class="tab-content" style="display: none;">
+                        <div class="admin-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h1 class="h2 mb-0">Base de Clients</h1>
+                                    <p class="text-muted mb-0">Clients provenant des commandes</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-custom" onclick="loadCustomersData()">
+                                        <i class="fas fa-sync-alt me-1"></i> Actualiser
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Client</th>
+                                                <th>Email</th>
+                                                <th>Téléphone</th>
+                                                <th>Commandes</th>
+                                                <th>Total Dépensé</th>
+                                                <th>Dernière Commande</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="customersTableBody">
+                                            <!-- Clients chargés dynamiquement -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="customersEmptyState" class="text-center py-5" style="display: none;">
+                                    <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucun client trouvé</h5>
+                                    <p class="text-muted">Les clients apparaîtront après leurs premières commandes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Tab -->
+                    <div id="messages" class="tab-content" style="display: none;">
+                        <div class="admin-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h1 class="h2 mb-0">Messages des Clients</h1>
+                                    <p class="text-muted mb-0">Messages provenant de contact.html</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-custom" onclick="loadMessagesFromStorage()">
+                                        <i class="fas fa-sync-alt me-1"></i> Actualiser
+                                    </button>
+                                    <button class="btn btn-outline-custom" onclick="markAllAsRead()">
+                                        <i class="fas fa-check-double me-1"></i> Tout marquer lu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="messagesList">
+                                    <!-- Messages chargés dynamiquement -->
+                                </div>
+                                <div id="messagesEmptyState" class="text-center py-5" style="display: none;">
+                                    <i class="fas fa-envelope fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucun message trouvé</h5>
+                                    <p class="text-muted">Les messages de contact.html apparaîtront ici</p>
+                                    <button class="btn btn-custom" onclick="loadMessagesFromStorage()">
+                                        <i class="fas fa-sync-alt me-1"></i> Vérifier à nouveau
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour voir/répondre aux messages -->
+    <div class="modal fade" id="messageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Message de <span id="messageCustomerName"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Email:</strong> <span id="messageCustomerEmail"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Date:</strong> <span id="messageDate"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Sujet:</strong> <span id="messageSubject"></span>
+                    </div>
+                    <div class="mb-4">
+                        <strong>Message:</strong>
+                        <div class="border rounded p-3 mt-2 bg-light">
+                            <span id="messageContent"></span>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire de réponse -->
+                    <div class="reply-form">
+                        <h6><i class="fas fa-reply me-2"></i>Répondre au client</h6>
+                        <form id="replyForm">
+                            <div class="mb-3">
+                                <label class="form-label">Sujet de la réponse</label>
+                                <input type="text" class="form-control" id="replySubject" value="RE: " required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Votre réponse</label>
+                                <textarea class="form-control" id="replyMessage" rows="5" placeholder="Tapez votre réponse ici..." required></textarea>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-secondary" onclick="closeReplyForm()">Annuler</button>
+                                <button type="submit" class="btn btn-custom">
+                                    <i class="fas fa-paper-plane me-1"></i> Envoyer la réponse
+                                </button>
+                                <button type="button" class="btn btn-outline-custom" onclick="sendEmailReply()">
+                                    <i class="fas fa-envelope me-1"></i> Répondre par email
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un produit -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Nouveau Produit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nom du produit</label>
+                                <input type="text" class="form-control" id="productName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Catégorie</label>
+                                <select class="form-select" id="productCategory" required>
+                                    <option value="baskets">Baskets</option>
+                                    <option value="sandales">Sandales</option>
+                                    <option value="sport">Chaussures de sport</option>
+                                    <option value="escarpins">Escarpins</option>
+                                    <option value="bottines">Bottines</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Prix (FCFA)</label>
+                                <input type="number" class="form-control" id="productPrice" required min="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Quantité en stock</label>
+                                <input type="number" class="form-control" id="productStock" required min="0">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image URL</label>
+                            <input type="url" class="form-control" id="productImage" placeholder="https://example.com/image.jpg">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-custom" onclick="saveProduct()">
+                        <i class="fas fa-save me-1"></i> Enregistrer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // =============================================
+        // CONFIGURATION
+        // =============================================
+
+        const CONFIG = {
+            ADMIN_EMAIL: "admin@daleuuyurafett.sn",
+            // Le mot de passe doit être saisi par l'administrateur
+        };
+
+        // Données de l'application
+        let appData = {
+            orders: [],
+            messages: [],
+            customers: [],
+            stock: [],
+            currentEditingProduct: null
+        };
+
+        // =============================================
+        // INITIALISATION
+        // =============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initPasswordToggle();
+            setupEventListeners();
+            loadInitialData();
+        });
+
+        function initPasswordToggle() {
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                });
+            }
+        }
+
+        function setupEventListeners() {
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', handleLogin);
+            }
+
+            const replyForm = document.getElementById('replyForm');
+            if (replyForm) {
+                replyForm.addEventListener('submit', handleReply);
+            }
+        }
+
+        function loadInitialData() {
+            // Charger les données existantes
+            loadStockFromStorage();
+            loadOrdersFromStorage();
+            loadMessagesFromStorage();
+            loadCustomersData();
+        }
+
+        // =============================================
+        // GESTION DE LA CONNEXION
+        // =============================================
+
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Vérification basique - En production, cela devrait être sécurisé
+            if (email === CONFIG.ADMIN_EMAIL && password) {
+                // Sauvegarder la session
+                if (rememberMe) {
+                    const session = {
+                        email: email,
+                        expires: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 jours
+                    };
+                    localStorage.setItem('daleuuyurafett_session', JSON.stringify(session));
+                }
+                
+                showNotification('Connexion réussie !', 'success');
+                showAdminPage();
+            } else {
+                showNotification('Email ou mot de passe incorrect', 'error');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('daleuuyurafett_session');
+            showNotification('Déconnexion réussie', 'info');
+            showLoginPage();
+        }
+
+        function showLoginPage() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('adminPage').style.display = 'none';
+            // Vider le mot de passe
+            document.getElementById('password').value = '';
+        }
+
+        function showAdminPage() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminPage').style.display = 'block';
+            refreshDashboard();
+        }
+
+        // =============================================
+        // GESTION DES ONGLETS
+        // =============================================
+
+        function switchToTab(tabName) {
+            // Cacher tous les onglets
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Désactiver tous les liens
+            document.querySelectorAll('#adminMenu .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Activer l'onglet cible
+            const targetTab = document.getElementById(tabName);
+            const targetLink = document.querySelector(`[href="#${tabName}"]`);
+            
+            if (targetTab && targetLink) {
+                targetTab.style.display = 'block';
+                targetLink.classList.add('active');
+                
+                // Charger les données spécifiques
+                if (tabName === 'orders') {
+                    loadOrdersFromStorage();
+                } else if (tabName === 'messages') {
+                    loadMessagesFromStorage();
+                } else if (tabName === 'customers') {
+                    loadCustomersData();
+                } else if (tabName === 'stock') {
+                    loadStockFromStorage();
+                }
+            }
+        }
+
+        // =============================================
+        // GESTION DU STOCK
+        // =============================================
+
+        function loadStockFromStorage() {
+            const savedStock = localStorage.getItem('daleuuyurafett_stock');
+            
+            if (savedStock) {
+                appData.stock = JSON.parse(savedStock);
+            } else {
+                // Données de démonstration
+                appData.stock = [
+                    { 
+                        id: 1, 
+                        name: "Baskets Classiques Noir", 
+                        category: "baskets", 
+                        price: 25000, 
+                        stock: 15,
+                        image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=150",
+                        description: "Baskets élégantes en cuir véritable",
+                        sales: 45
+                    },
+                    { 
+                        id: 2, 
+                        name: "Sandales Élégantes Dorées", 
+                        category: "sandales", 
+                        price: 18000, 
+                        stock: 7,
+                        image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=150",
+                        description: "Sandales confortables avec finitions dorées",
+                        sales: 32
+                    },
+                    { 
+                        id: 3, 
+                        name: "Chaussures Sport Performance", 
+                        category: "sport", 
+                        price: 32000, 
+                        stock: 12,
+                        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=150",
+                        description: "Chaussures de sport haute performance",
+                        sales: 28
+                    },
+                    { 
+                        id: 4, 
+                        name: "Escarpins Élégants Noir", 
+                        category: "escarpins", 
+                        price: 22000, 
+                        stock: 3,
+                        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=150",
+                        description: "Escarpins élégants pour occasions spéciales",
+                        sales: 15
+                    }
+                ];
+                localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
+            }
+            
+            displayStock();
+            updateDashboard();
+        }
+
+        function displayStock() {
+            const tbody = document.getElementById('stockTableBody');
+            
+            tbody.innerHTML = appData.stock.map(product => {
+                const stockStatus = getStockStatus(product.stock);
+                return `
+                    <tr>
+                        <td>
+                            <img src="${product.image}" alt="${product.name}" class="rounded" width="50" height="50" style="object-fit: cover;">
+                        </td>
+                        <td>
+                            <strong>${product.name}</strong>
+                            <br><small class="text-muted">${product.description}</small>
+                        </td>
+                        <td>${getCategoryName(product.category)}</td>
+                        <td><strong>${product.price.toLocaleString()} FCFA</strong></td>
+                        <td>${product.stock}</td>
+                        <td>
+                            <span class="badge stock-status-${stockStatus}">
+                                ${getStockStatusText(stockStatus)}
+                            </span>
+                        </td>
+                        <td>${product.sales || 0}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-custom" onclick="editProduct(${product.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-success" onclick="updateStock(${product.id}, 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-warning" onclick="updateStock(${product.id}, -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct(${product.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function getStockStatus(stock) {
+            if (stock > 10) return 'high';
+            if (stock > 5) return 'medium';
+            return 'low';
+        }
+
+        function getStockStatusText(status) {
+            const statusMap = {
+                'high': 'Bon stock',
+                'medium': 'Stock moyen',
+                'low': 'Stock faible'
+            };
+            return statusMap[status] || 'Inconnu';
+        }
+
+        function getCategoryName(category) {
+            const categories = {
+                'baskets': 'Baskets',
+                'sandales': 'Sandales',
+                'sport': 'Sport',
+                'escarpins': 'Escarpins',
+                'bottines': 'Bottines'
+            };
+            return categories[category] || category;
+        }
+
+        function addNewProduct() {
+            appData.currentEditingProduct = null;
+            document.getElementById('productModalTitle').textContent = 'Nouveau Produit';
+            document.getElementById('productForm').reset();
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+
+        function editProduct(productId) {
+            const product = appData.stock.find(p => p.id === productId);
+            if (product) {
+                appData.currentEditingProduct = productId;
+                document.getElementById('productModalTitle').textContent = 'Modifier le Produit';
+                document.getElementById('productName').value = product.name;
+                document.getElementById('productCategory').value = product.category;
+                document.getElementById('productPrice').value = product.price;
+                document.getElementById('productStock').value = product.stock;
+                document.getElementById('productDescription').value = product.description || '';
+                document.getElementById('productImage').value = product.image || '';
+                new bootstrap.Modal(document.getElementById('productModal')).show();
+            }
+        }
+
+        function saveProduct() {
+            const name = document.getElementById('productName').value;
+            const category = document.getElementById('productCategory').value;
+            const price = parseInt(document.getElementById('productPrice').value);
+            const stock = parseInt(document.getElementById('productStock').value);
+            const description = document.getElementById('productDescription').value;
+            const image = document.getElementById('productImage').value;
+
+            if (!name || !price || stock < 0) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+
+            if (appData.currentEditingProduct) {
+                // Modification
+                const product = appData.stock.find(p => p.id === appData.currentEditingProduct);
+                if (product) {
+                    product.name = name;
+                    product.category = category;
+                    product.price = price;
+                    product.stock = stock;
+                    product.description = description;
+                    product.image = image;
+                }
+            } else {
+                // Nouveau produit
+                const newProduct = {
+                    id: Date.now(),
+                    name,
+                    category,
+                    price,
+                    stock,
+                    description,
+                    image: image || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=150',
+                    sales: 0
+                };
+                appData.stock.push(newProduct);
+            }
+
+            localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
+            displayStock();
+            updateDashboard();
+            bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+            showNotification('Produit enregistré avec succès', 'success');
+        }
+
+        function updateStock(productId, change) {
+            const product = appData.stock.find(p => p.id === productId);
+            if (product) {
+                const newStock = product.stock + change;
+                if (newStock >= 0) {
+                    product.stock = newStock;
+                    localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
+                    displayStock();
+                    updateDashboard();
+                    showNotification('Stock mis à jour', 'success');
+                } else {
+                    showNotification('Le stock ne peut pas être négatif', 'error');
+                }
+            }
+        }
+
+        function deleteProduct(productId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+                appData.stock = appData.stock.filter(p => p.id !== productId);
+                localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
+                displayStock();
+                updateDashboard();
+                showNotification('Produit supprimé', 'success');
+            }
+        }
+
+        // =============================================
+        // GESTION DES COMMANDES
+        // =============================================
+
+        function loadOrdersFromStorage() {
+            const savedOrders = localStorage.getItem('daleuuyurafett_orders');
+            
+            if (savedOrders) {
+                appData.orders = JSON.parse(savedOrders);
+                showNotification(`${appData.orders.length} commande(s) chargée(s)`, 'success');
+            } else {
+                appData.orders = [];
+                showNotification('Aucune commande trouvée', 'info');
+            }
+            
+            displayOrders();
+            updateDashboard();
+        }
+
+        function displayOrders() {
+            const tbody = document.getElementById('ordersTableBody');
+            const emptyState = document.getElementById('ordersEmptyState');
+            
+            if (appData.orders.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            tbody.innerHTML = appData.orders.map(order => `
+                <tr>
+                    <td><strong>${order.id || 'N/A'}</strong></td>
+                    <td>${order.name || 'Non spécifié'}</td>
+                    <td>${order.email || 'Non spécifié'}</td>
+                    <td>${order.phone || 'Non spécifié'}</td>
+                    <td>${order.product || 'Non spécifié'}</td>
+                    <td>${order.quantity || 1}</td>
+                    <td>${order.total ? order.total.toLocaleString() + ' FCFA' : 'N/A'}</td>
+                    <td>${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : 'N/A'}</td>
+                    <td>
+                        <span class="badge order-status-${order.status || 'pending'}">
+                            ${getOrderStatusText(order.status)}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-custom" onclick="viewOrderDetails('${order.id}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-success" onclick="updateOrderStatus('${order.id}', 'confirmed')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder('${order.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function getOrderStatusText(status) {
+            const statusMap = {
+                'pending': 'En attente',
+                'confirmed': 'Confirmée',
+                'shipped': 'Expédiée',
+                'delivered': 'Livrée',
+                'cancelled': 'Annulée'
+            };
+            return statusMap[status] || 'En attente';
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            const order = appData.orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+                displayOrders();
+                updateDashboard();
+                showNotification(`Statut de la commande ${orderId} mis à jour`, 'success');
+            }
+        }
+
+        function deleteOrder(orderId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')) {
+                appData.orders = appData.orders.filter(o => o.id !== orderId);
+                localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+                displayOrders();
+                updateDashboard();
+                showNotification('Commande supprimée', 'success');
+            }
+        }
+
+        function viewOrderDetails(orderId) {
+            const order = appData.orders.find(o => o.id === orderId);
+            if (order) {
+                alert(`Détails de la commande:\n\nID: ${order.id}\nClient: ${order.name}\nEmail: ${order.email}\nTéléphone: ${order.phone}\nProduit: ${order.product}\nQuantité: ${order.quantity}\nTotal: ${order.total ? order.total.toLocaleString() + ' FCFA' : 'N/A'}\nDate: ${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : 'N/A'}\nStatut: ${getOrderStatusText(order.status)}`);
+            }
+        }
+
+        // =============================================
+        // GESTION DES CLIENTS
+        // =============================================
+
+        function loadCustomersData() {
+            // Générer la liste des clients à partir des commandes
+            const customersMap = new Map();
+            
+            appData.orders.forEach(order => {
+                if (order.email) {
+                    if (!customersMap.has(order.email)) {
+                        customersMap.set(order.email, {
+                            name: order.name,
+                            email: order.email,
+                            phone: order.phone,
+                            orders: 0,
+                            totalSpent: 0,
+                            lastOrder: order.date
+                        });
+                    }
+                    
+                    const customer = customersMap.get(order.email);
+                    customer.orders += 1;
+                    customer.totalSpent += (order.total || 0);
+                    if (order.date > customer.lastOrder) {
+                        customer.lastOrder = order.date;
+                    }
+                }
+            });
+            
+            appData.customers = Array.from(customersMap.values());
+            displayCustomers();
+        }
+
+        function displayCustomers() {
+            const tbody = document.getElementById('customersTableBody');
+            const emptyState = document.getElementById('customersEmptyState');
+            
+            if (appData.customers.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            tbody.innerHTML = appData.customers.map(customer => `
+                <tr>
+                    <td>
+                        <strong>${customer.name}</strong>
+                    </td>
+                    <td>${customer.email}</td>
+                    <td>${customer.phone || 'Non spécifié'}</td>
+                    <td>${customer.orders}</td>
+                    <td>${customer.totalSpent.toLocaleString()} FCFA</td>
+                    <td>${customer.lastOrder ? new Date(customer.lastOrder).toLocaleDateString('fr-FR') : 'N/A'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-custom" onclick="contactCustomer('${customer.email}')">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function contactCustomer(email) {
+            window.open(`mailto:${email}`, '_blank');
+        }
+
+        // =============================================
+        // GESTION DES MESSAGES
+        // =============================================
+
+        function loadMessagesFromStorage() {
+            const savedMessages = localStorage.getItem('daleuuyurafett_messages');
+            
+            if (savedMessages) {
+                appData.messages = JSON.parse(savedMessages);
+                showNotification(`${appData.messages.length} message(s) chargé(s)`, 'success');
+            } else {
+                appData.messages = [];
+                showNotification('Aucun message trouvé', 'info');
+            }
+            
+            displayMessages();
+            updateDashboard();
+        }
+
+        function displayMessages() {
+            const container = document.getElementById('messagesList');
+            const emptyState = document.getElementById('messagesEmptyState');
+            
+            if (appData.messages.length === 0) {
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            container.innerHTML = appData.messages.map(message => `
+                <div class="card message-card mb-3 ${message.status === 'unread' ? 'unread' : ''}" onclick="viewMessage(${message.id})">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="card-title mb-1">
+                                    ${message.name} 
+                                    ${message.status === 'unread' ? '<span class="badge badge-danger ms-2">Nouveau</span>' : ''}
+                                </h6>
+                                <p class="card-text text-muted mb-1">
+                                    <i class="fas fa-envelope me-1"></i>${message.email}
+                                </p>
+                                <p class="card-text mb-2"><strong>${message.subject}</strong></p>
+                                <p class="card-text text-muted">${message.message.substring(0, 100)}...</p>
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    ${message.timestamp ? new Date(message.timestamp).toLocaleDateString('fr-FR') + ' ' + new Date(message.timestamp).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 'Date inconnue'}
+                                </small>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-outline-danger" onclick="event.stopPropagation(); deleteMessage(${message.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let currentMessageId = null;
+
+        function viewMessage(messageId) {
+            const message = appData.messages.find(m => m.id === messageId);
+            if (message) {
+                currentMessageId = messageId;
+                
+                // Marquer comme lu
+                message.status = 'read';
+                localStorage.setItem('daleuuyurafett_messages', JSON.stringify(appData.messages));
+                displayMessages();
+                updateDashboard();
+                
+                // Afficher le modal
+                document.getElementById('messageCustomerName').textContent = message.name;
+                document.getElementById('messageCustomerEmail').textContent = message.email;
+                document.getElementById('messageSubject').textContent = message.subject;
+                document.getElementById('messageContent').textContent = message.message;
+                document.getElementById('messageDate').textContent = message.timestamp ? 
+                    new Date(message.timestamp).toLocaleDateString('fr-FR') + ' ' + 
+                    new Date(message.timestamp).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 
+                    'Date inconnue';
+                
+                // Pré-remplir le formulaire de réponse
+                document.getElementById('replySubject').value = `RE: ${message.subject}`;
+                document.getElementById('replyMessage').value = `Bonjour ${message.name},\n\n`;
+                
+                new bootstrap.Modal(document.getElementById('messageModal')).show();
+            }
+        }
+
+        function handleReply(e) {
+            e.preventDefault();
+            
+            const subject = document.getElementById('replySubject').value;
+            const message = document.getElementById('replyMessage').value;
+            
+            if (!subject || !message) {
+                showNotification('Veuillez remplir tous les champs', 'error');
+                return;
+            }
+            
+            // Enregistrer la réponse (simulation)
+            const originalMessage = appData.messages.find(m => m.id === currentMessageId);
+            if (originalMessage) {
+                originalMessage.replied = true;
+                originalMessage.replyDate = new Date().toISOString();
+                localStorage.setItem('daleuuyurafett_messages', JSON.stringify(appData.messages));
+            }
+            
+            showNotification('Réponse envoyée avec succès', 'success');
+            bootstrap.Modal.getInstance(document.getElementById('messageModal')).hide();
+        }
+
+        function sendEmailReply() {
+            const email = document.getElementById('messageCustomerEmail').textContent;
+            const subject = document.getElementById('replySubject').value;
+            const body = document.getElementById('replyMessage').value;
+            
+            window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+        }
+
+        function closeReplyForm() {
+            document.getElementById('replyForm').reset();
+        }
+
+        function deleteMessage(messageId) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce message ?')) {
+                appData.messages = appData.messages.filter(m => m.id !== messageId);
+                localStorage.setItem('daleuuyurafett_messages', JSON.stringify(appData.messages));
+                displayMessages();
+                updateDashboard();
+                showNotification('Message supprimé', 'success');
+            }
+        }
+
+        function markAllAsRead() {
+            appData.messages.forEach(message => {
+                message.status = 'read';
+            });
+            localStorage.setItem('daleuuyurafett_messages', JSON.stringify(appData.messages));
+            displayMessages();
+            updateDashboard();
+            showNotification('Tous les messages marqués comme lus', 'success');
+        }
+
+        // =============================================
+        // DASHBOARD
+        // =============================================
+
+        function refreshDashboard() {
+            loadOrdersFromStorage();
+            loadMessagesFromStorage();
+            loadStockFromStorage();
+            loadCustomersData();
+            updateDashboard();
+        }
+
+        function updateDashboard() {
+            // Mettre à jour les statistiques
+            const totalRevenue = appData.orders.reduce((sum, order) => sum + (order.total || 0), 0);
+            const pendingOrders = appData.orders.filter(order => order.status === 'pending').length;
+            const unreadMessages = appData.messages.filter(message => message.status === 'unread').length;
+            const lowStockProducts = appData.stock.filter(product => product.stock < 5).length;
+
+            document.getElementById('dashboardRevenue').textContent = totalRevenue.toLocaleString() + ' FCFA';
+            document.getElementById('dashboardOrders').textContent = appData.orders.length;
+            document.getElementById('dashboardMessages').textContent = appData.messages.length;
+            document.getElementById('dashboardStock').textContent = appData.stock.length;
+
+            // Mettre à jour les badges
+            document.getElementById('ordersBadge').textContent = pendingOrders;
+            document.getElementById('messagesBadge').textContent = unreadMessages;
+            document.getElementById('stockBadge').textContent = lowStockProducts;
+            document.getElementById('customersBadge').textContent = appData.customers.length;
+
+            // Mettre à jour l'activité récente
+            updateRecentActivity();
+        }
+
+        function updateRecentActivity() {
+            const container = document.getElementById('recentActivity');
+            
+            // Combiner commandes et messages récents
+            const recentActivities = [
+                ...appData.orders.slice(0, 3).map(order => ({
+                    type: 'order',
+                    icon: 'fas fa-shopping-cart',
+                    title: `Nouvelle commande #${order.id}`,
+                    description: `${order.name} - ${order.total ? order.total.toLocaleString() + ' FCFA' : 'Montant inconnu'}`,
+                    time: order.date || new Date().toISOString()
+                })),
+                ...appData.messages.slice(0, 2).map(message => ({
+                    type: 'message',
+                    icon: 'fas fa-envelope',
+                    title: `Message de ${message.name}`,
+                    description: message.subject,
+                    time: message.timestamp || new Date().toISOString()
+                }))
+            ].sort((a, b) => new Date(b.time) - new Date(a.time)).slice(0, 5);
+
+            if (recentActivities.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center py-4">Aucune activité récente</p>';
+                return;
+            }
+
+            container.innerHTML = recentActivities.map(activity => `
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="${activity.icon}"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-1">${activity.title}</h6>
+                        <p class="mb-1 text-muted">${activity.description}</p>
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>
+                            ${formatRelativeTime(activity.time)}
+                        </small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatRelativeTime(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+
+            if (minutes < 1) return 'À l\'instant';
+            if (minutes < 60) return `Il y a ${minutes} min`;
+            if (hours < 24) return `Il y a ${hours} h`;
+            if (days < 7) return `Il y a ${days} j`;
+            
+            return date.toLocaleDateString('fr-FR');
+        }
+
+        // =============================================
+        // FONCTIONS UTILITAIRES
+        // =============================================
+
+        function showNotification(message, type = 'info') {
+            // Créer une alerte Bootstrap simple
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alertDiv.innerHTML = `
+                <div>${message}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 4000);
+        }
+
+        function exportData() {
+            const data = {
+                orders: appData.orders,
+                messages: appData.messages,
+                customers: appData.customers,
+                stock: appData.stock,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `export-daleuuyurafett-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Données exportées avec succès', 'success');
+        }
+
+        // Charger les données au démarrage
+        setTimeout(() => {
+            if (document.getElementById('adminPage').style.display !== 'none') {
+                refreshDashboard();
+            }
+        }, 1000);
+
+    </script>
+</body>
+</html>
