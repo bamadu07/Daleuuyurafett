@@ -364,6 +364,300 @@
         body.dark-mode .reply-form {
             background: #2d3748;
         }
+
+        /* Styles pour les améliorations */
+        .filter-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        body.dark-mode .filter-section {
+            background: var(--accent-color);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--medium-gray);
+            background: white;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .filter-btn {
+            background: #2d3748;
+            border-color: #4a5568;
+            color: white;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold-color);
+            color: white;
+            border-color: var(--gold-color);
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .date-range-picker {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-mini-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid var(--gold-color);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .stat-mini-card {
+            background: var(--accent-color);
+        }
+
+        .stat-mini-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-mini-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold-color);
+            margin-bottom: 5px;
+        }
+
+        .order-details-modal .modal-body {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .order-items-table {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        body.dark-mode .order-items-table {
+            background: #2d3748;
+        }
+
+        .order-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 20px;
+        }
+
+        .order-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gold-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold-color);
+        }
+
+        .timeline-date {
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        body.dark-mode .timeline-content {
+            background: #2d3748;
+        }
+
+        .customer-profile {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .customer-profile {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+        }
+
+        .customer-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-color), #f4d03f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 15px;
+        }
+
+        .customer-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        body.dark-mode .info-item {
+            background: #2d3748;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .info-value {
+            color: white;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--medium-gray);
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .page-btn {
+            background: #2d3748;
+            border-color: #4a5568;
+            color: white;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--gold-color);
+            color: white;
+            border-color: var(--gold-color);
+        }
+
+        /* Nouveaux badges pour le statut */
+        .badge-pending { background: linear-gradient(135deg, #ffc107, #ff9800); }
+        .badge-confirmed { background: linear-gradient(135deg, #17a2b8, #00bcd4); }
+        .badge-shipped { background: linear-gradient(135deg, #007bff, #2196f3); }
+        .badge-delivered { background: linear-gradient(135deg, #28a745, #4caf50); }
+        .badge-cancelled { background: linear-gradient(135deg, #dc3545, #f44336); }
+
+        /* Animation pour les nouvelles commandes */
+        @keyframes highlightNew {
+            0% { background-color: rgba(212, 175, 55, 0.2); }
+            100% { background-color: transparent; }
+        }
+
+        .new-order {
+            animation: highlightNew 2s ease-in-out;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .date-range-picker {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .table-responsive {
+                font-size: 0.9rem;
+            }
+            
+            .table th,
+            .table td {
+                padding: 8px;
+            }
+        }
+
+        /* Hover effects for tables */
+        .table-hover tbody tr:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .table-hover tbody tr:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -642,34 +936,125 @@
                         </div>
                     </div>
 
-                    <!-- Orders Tab -->
+                    <!-- Orders Tab - CORRIGÉ -->
                     <div id="orders" class="tab-content" style="display: none;">
                         <div class="admin-header">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <h1 class="h2 mb-0">Toutes les Commandes</h1>
+                                    <h1 class="h2 mb-1"><i class="fas fa-clipboard-list me-2"></i>Gestion des Commandes</h1>
                                     <p class="text-muted mb-0">Commandes provenant de products.html</p>
                                 </div>
                                 <div class="col-md-6 text-end">
                                     <button class="btn btn-custom" onclick="loadOrdersFromStorage()">
                                         <i class="fas fa-sync-alt me-1"></i> Actualiser
                                     </button>
+                                    <button class="btn btn-outline-custom" onclick="exportOrders()">
+                                        <i class="fas fa-download me-1"></i> Exporter
+                                    </button>
+                                    <button class="btn btn-outline-success" onclick="showAddOrderForm()">
+                                        <i class="fas fa-plus me-1"></i> Ajouter commande
+                                    </button>
+                                    <button class="btn btn-outline-info" onclick="loadOrdersFromProductsHTML()">
+                                        <i class="fas fa-upload me-1"></i> Importer
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Statistiques des commandes -->
+                        <div class="stats-cards mb-4">
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="totalOrdersCount">0</div>
+                                <div class="text-muted">Total Commandes</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="pendingOrdersCount">0</div>
+                                <div class="text-muted">En Attente</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="confirmedOrdersCount">0</div>
+                                <div class="text-muted">Confirmées</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="revenueOrders">0 FCFA</div>
+                                <div class="text-muted">Chiffre d'Affaires</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="avgOrderValue">0 FCFA</div>
+                                <div class="text-muted">Panier Moyen</div>
+                            </div>
+                        </div>
+
+                        <!-- Filtres -->
+                        <div class="filter-section">
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <h5 class="mb-0">Filtrer les commandes</h5>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-sm btn-outline-custom" onclick="clearFilters()">
+                                        <i class="fas fa-times me-1"></i> Effacer filtres
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <input type="text" class="form-control search-input" id="orderSearch" 
+                                       placeholder="Rechercher par client, produit ou ID..." 
+                                       onkeyup="filterOrders()">
+                                
+                                <select class="form-select" style="width: auto;" id="statusFilter" onchange="filterOrders()">
+                                    <option value="all">Tous les statuts</option>
+                                    <option value="pending">En attente</option>
+                                    <option value="confirmed">Confirmée</option>
+                                    <option value="shipped">Expédiée</option>
+                                    <option value="delivered">Livrée</option>
+                                    <option value="cancelled">Annulée</option>
+                                </select>
+                                
+                                <select class="form-select" style="width: auto;" id="periodFilter" onchange="filterOrders()">
+                                    <option value="all">Toute période</option>
+                                    <option value="today">Aujourd'hui</option>
+                                    <option value="week">Cette semaine</option>
+                                    <option value="month">Ce mois</option>
+                                    <option value="year">Cette année</option>
+                                </select>
+                                
+                                <div class="date-range-picker">
+                                    <input type="date" class="form-control" id="startDate" onchange="filterOrders()">
+                                    <span>à</span>
+                                    <input type="date" class="form-control" id="endDate" onchange="filterOrders()">
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn filter-btn active" onclick="filterByStatus('all')">Tous</button>
+                                    <button type="button" class="btn filter-btn" onclick="filterByStatus('pending')">
+                                        En attente <span class="badge bg-warning ms-1" id="pendingBadge">0</span>
+                                    </button>
+                                    <button type="button" class="btn filter-btn" onclick="filterByStatus('confirmed')">
+                                        Confirmées <span class="badge bg-info ms-1" id="confirmedBadge">0</span>
+                                    </button>
+                                    <button type="button" class="btn filter-btn" onclick="filterByStatus('delivered')">
+                                        Livrées <span class="badge bg-success ms-1" id="deliveredBadge">0</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tableau des commandes amélioré -->
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>ID Commande</th>
+                                                <th>ID</th>
                                                 <th>Client</th>
-                                                <th>Email</th>
-                                                <th>Téléphone</th>
+                                                <th>Contact</th>
                                                 <th>Produits</th>
-                                                <th>Quantité</th>
+                                                <th>Détails</th>
                                                 <th>Total</th>
                                                 <th>Date</th>
                                                 <th>Statut</th>
@@ -681,6 +1066,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                
+                                <!-- Pagination -->
+                                <div class="pagination-container" id="ordersPagination">
+                                    <!-- Pagination générée dynamiquement -->
+                                </div>
+                                
+                                <!-- État vide -->
                                 <div id="ordersEmptyState" class="text-center py-5" style="display: none;">
                                     <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
                                     <h5 class="text-muted">Aucune commande trouvée</h5>
@@ -693,22 +1085,123 @@
                         </div>
                     </div>
 
-                    <!-- Customers Tab -->
+                    <!-- Customers Tab - AMÉLIORÉ -->
                     <div id="customers" class="tab-content" style="display: none;">
                         <div class="admin-header">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <h1 class="h2 mb-0">Base de Clients</h1>
+                                    <h1 class="h2 mb-1"><i class="fas fa-users me-2"></i>Gestion des Clients</h1>
                                     <p class="text-muted mb-0">Clients provenant des commandes</p>
                                 </div>
                                 <div class="col-md-6 text-end">
                                     <button class="btn btn-custom" onclick="loadCustomersData()">
                                         <i class="fas fa-sync-alt me-1"></i> Actualiser
                                     </button>
+                                    <button class="btn btn-outline-custom" onclick="exportCustomers()">
+                                        <i class="fas fa-download me-1"></i> Exporter
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Statistiques clients -->
+                        <div class="stats-cards mb-4">
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="totalCustomersCount">0</div>
+                                <div class="text-muted">Clients Totaux</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="newCustomersCount">0</div>
+                                <div class="text-muted">Nouveaux (30j)</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="avgCustomerValue">0 FCFA</div>
+                                <div class="text-muted">Valeur Moyenne</div>
+                            </div>
+                            <div class="stat-mini-card">
+                                <div class="stat-mini-value" id="repeatCustomersCount">0</div>
+                                <div class="text-muted">Clients Fidèles</div>
+                            </div>
+                        </div>
+
+                        <!-- Profil client sélectionné -->
+                        <div id="customerProfileSection" style="display: none;">
+                            <div class="customer-profile">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 text-center">
+                                        <div class="customer-avatar" id="customerAvatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <h5 class="mt-2 mb-1" id="customerNameDisplay"></h5>
+                                        <div class="text-muted" id="customerTier">Client Standard</div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="customer-info-grid">
+                                            <div class="info-item">
+                                                <div class="info-label">Email</div>
+                                                <div class="info-value" id="customerEmailDisplay"></div>
+                                            </div>
+                                            <div class="info-item">
+                                                <div class="info-label">Téléphone</div>
+                                                <div class="info-value" id="customerPhoneDisplay"></div>
+                                            </div>
+                                            <div class="info-item">
+                                                <div class="info-label">Commandes</div>
+                                                <div class="info-value" id="customerOrdersCount">0</div>
+                                            </div>
+                                            <div class="info-item">
+                                                <div class="info-label">Total Dépensé</div>
+                                                <div class="info-value" id="customerTotalSpent">0 FCFA</div>
+                                            </div>
+                                            <div class="info-item">
+                                                <div class="info-label">Depuis</div>
+                                                <div class="info-value" id="customerSince">-</div>
+                                            </div>
+                                            <div class="info-item">
+                                                <div class="info-label">Dernière Commande</div>
+                                                <div class="info-value" id="customerLastOrder">-</div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-center">
+                                            <button class="btn btn-sm btn-custom me-2" onclick="contactSelectedCustomer()">
+                                                <i class="fas fa-envelope me-1"></i> Contacter
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-custom" onclick="viewCustomerOrders()">
+                                                <i class="fas fa-list me-1"></i> Voir toutes les commandes
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary" onclick="closeCustomerProfile()">
+                                                <i class="fas fa-times me-1"></i> Fermer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filtres clients -->
+                        <div class="filter-section">
+                            <div class="filter-group">
+                                <input type="text" class="form-control search-input" id="customerSearch" 
+                                       placeholder="Rechercher par nom, email ou téléphone..." 
+                                       onkeyup="filterCustomers()">
+                                
+                                <select class="form-select" style="width: auto;" id="customerTypeFilter" onchange="filterCustomers()">
+                                    <option value="all">Tous les clients</option>
+                                    <option value="new">Nouveaux clients</option>
+                                    <option value="repeat">Clients fidèles</option>
+                                    <option value="inactive">Clients inactifs</option>
+                                </select>
+                                
+                                <select class="form-select" style="width: auto;" id="customerSort" onchange="filterCustomers()">
+                                    <option value="recent">Plus récents</option>
+                                    <option value="name">Nom A-Z</option>
+                                    <option value="orders">Plus de commandes</option>
+                                    <option value="spent">Plus dépensiers</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Tableau des clients amélioré -->
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -716,11 +1209,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Client</th>
-                                                <th>Email</th>
-                                                <th>Téléphone</th>
-                                                <th>Commandes</th>
-                                                <th>Total Dépensé</th>
-                                                <th>Dernière Commande</th>
+                                                <th>Coordonnées</th>
+                                                <th>Activité</th>
+                                                <th>Valeur</th>
+                                                <th>Fidélité</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -729,6 +1221,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                
+                                <!-- Pagination -->
+                                <div class="pagination-container" id="customersPagination">
+                                    <!-- Pagination générée dynamiquement -->
+                                </div>
+                                
+                                <!-- État vide -->
                                 <div id="customersEmptyState" class="text-center py-5" style="display: none;">
                                     <i class="fas fa-users fa-3x text-muted mb-3"></i>
                                     <h5 class="text-muted">Aucun client trouvé</h5>
@@ -889,6 +1388,127 @@
         </div>
     </div>
 
+    <!-- Modal des détails de commande amélioré -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Détails de la Commande <span id="orderIdTitle"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body order-details-modal">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-user me-2"></i>Informations Client</h6>
+                            <div class="border rounded p-3">
+                                <p class="mb-1"><strong>Nom:</strong> <span id="orderCustomerName"></span></p>
+                                <p class="mb-1"><strong>Email:</strong> <span id="orderCustomerEmail"></span></p>
+                                <p class="mb-1"><strong>Téléphone:</strong> <span id="orderCustomerPhone"></span></p>
+                                <p class="mb-1"><strong>Adresse:</strong> <span id="orderCustomerAddress"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-info-circle me-2"></i>Détails Commande</h6>
+                            <div class="border rounded p-3">
+                                <p class="mb-1"><strong>Date:</strong> <span id="orderDateFull"></span></p>
+                                <p class="mb-1"><strong>Statut:</strong> <span id="orderStatusFull"></span></p>
+                                <p class="mb-1"><strong>Méthode de paiement:</strong> <span id="orderPaymentMethod"></span></p>
+                                <p class="mb-1"><strong>Livraison:</strong> <span id="orderShipping"></span></p>
+                                <p class="mb-1"><strong>Remarques:</strong> <span id="orderNotes"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6><i class="fas fa-boxes me-2"></i>Articles Commandés</h6>
+                    <div class="order-items-table mb-4">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Quantité</th>
+                                    <th>Prix unitaire</th>
+                                    <th>Sous-total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderItemsTable">
+                                <!-- Articles chargés dynamiquement -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Sous-total:</strong></td>
+                                    <td><strong><span id="orderSubtotal">0</span> FCFA</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Livraison:</strong></td>
+                                    <td><strong><span id="orderShippingCost">0</span> FCFA</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                    <td><strong><span id="orderTotalFull">0</span> FCFA</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <h6><i class="fas fa-history me-2"></i>Historique de la Commande</h6>
+                    <div class="order-timeline" id="orderTimeline">
+                        <!-- Timeline chargée dynamiquement -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group w-100">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-warning" onclick="printOrder()">
+                            <i class="fas fa-print me-1"></i> Imprimer
+                        </button>
+                        <button type="button" class="btn btn-custom" onclick="updateOrderStatusModal()">
+                            <i class="fas fa-edit me-1"></i> Modifier statut
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour modifier le statut de commande -->
+    <div class="modal fade" id="orderStatusModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier le statut de la commande</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="orderStatusForm">
+                        <div class="mb-3">
+                            <label class="form-label">Nouveau statut</label>
+                            <select class="form-select" id="newOrderStatus">
+                                <option value="pending">En attente</option>
+                                <option value="confirmed">Confirmée</option>
+                                <option value="processing">En traitement</option>
+                                <option value="shipped">Expédiée</option>
+                                <option value="delivered">Livrée</option>
+                                <option value="cancelled">Annulée</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Commentaire (optionnel)</label>
+                            <textarea class="form-control" id="statusComment" rows="3" placeholder="Ajoutez un commentaire pour le client..."></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="notifyCustomer" checked>
+                            <label class="form-check-label" for="notifyCustomer">Notifier le client par email</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-custom" onclick="saveOrderStatus()">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -899,7 +1519,6 @@
 
         const CONFIG = {
             ADMIN_EMAIL: "admin@daleuuyurafett.sn",
-            // Le mot de passe doit être saisi par l'administrateur
         };
 
         // Données de l'application
@@ -911,6 +1530,15 @@
             currentEditingProduct: null
         };
 
+        // Variables pour la pagination et filtres
+        let filteredOrders = [];
+        let filteredCustomers = [];
+        let currentOrderPage = 1;
+        let currentCustomerPage = 1;
+        let ordersPerPage = 10;
+        let customersPerPage = 10;
+        let selectedCustomer = null;
+
         // =============================================
         // INITIALISATION
         // =============================================
@@ -919,6 +1547,7 @@
             initPasswordToggle();
             setupEventListeners();
             loadInitialData();
+            checkSession();
         });
 
         function initPasswordToggle() {
@@ -950,11 +1579,24 @@
         }
 
         function loadInitialData() {
-            // Charger les données existantes
             loadStockFromStorage();
             loadOrdersFromStorage();
             loadMessagesFromStorage();
-            loadCustomersData();
+        }
+
+        function checkSession() {
+            const session = localStorage.getItem('daleuuyurafett_session');
+            if (session) {
+                try {
+                    const sessionData = JSON.parse(session);
+                    if (sessionData.email && sessionData.expires > Date.now()) {
+                        document.getElementById('email').value = sessionData.email;
+                        document.getElementById('rememberMe').checked = true;
+                    }
+                } catch (e) {
+                    console.error('Erreur de session:', e);
+                }
+            }
         }
 
         // =============================================
@@ -968,13 +1610,11 @@
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('rememberMe').checked;
 
-            // Vérification basique - En production, cela devrait être sécurisé
             if (email === CONFIG.ADMIN_EMAIL && password) {
-                // Sauvegarder la session
                 if (rememberMe) {
                     const session = {
                         email: email,
-                        expires: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 jours
+                        expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
                     };
                     localStorage.setItem('daleuuyurafett_session', JSON.stringify(session));
                 }
@@ -995,7 +1635,6 @@
         function showLoginPage() {
             document.getElementById('loginPage').style.display = 'flex';
             document.getElementById('adminPage').style.display = 'none';
-            // Vider le mot de passe
             document.getElementById('password').value = '';
         }
 
@@ -1010,17 +1649,14 @@
         // =============================================
 
         function switchToTab(tabName) {
-            // Cacher tous les onglets
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.style.display = 'none';
             });
             
-            // Désactiver tous les liens
             document.querySelectorAll('#adminMenu .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
             
-            // Activer l'onglet cible
             const targetTab = document.getElementById(tabName);
             const targetLink = document.querySelector(`[href="#${tabName}"]`);
             
@@ -1028,7 +1664,6 @@
                 targetTab.style.display = 'block';
                 targetLink.classList.add('active');
                 
-                // Charger les données spécifiques
                 if (tabName === 'orders') {
                     loadOrdersFromStorage();
                 } else if (tabName === 'messages') {
@@ -1051,7 +1686,6 @@
             if (savedStock) {
                 appData.stock = JSON.parse(savedStock);
             } else {
-                // Données de démonstration
                 appData.stock = [
                     { 
                         id: 1, 
@@ -1205,7 +1839,6 @@
             }
 
             if (appData.currentEditingProduct) {
-                // Modification
                 const product = appData.stock.find(p => p.id === appData.currentEditingProduct);
                 if (product) {
                     product.name = name;
@@ -1216,7 +1849,6 @@
                     product.image = image;
                 }
             } else {
-                // Nouveau produit
                 const newProduct = {
                     id: Date.now(),
                     name,
@@ -1264,7 +1896,7 @@
         }
 
         // =============================================
-        // GESTION DES COMMANDES
+        // GESTION DES COMMANDES - CORRIGÉE
         // =============================================
 
         function loadOrdersFromStorage() {
@@ -1274,53 +1906,199 @@
                 appData.orders = JSON.parse(savedOrders);
                 showNotification(`${appData.orders.length} commande(s) chargée(s)`, 'success');
             } else {
-                appData.orders = [];
-                showNotification('Aucune commande trouvée', 'info');
+                appData.orders = [
+                    {
+                        id: 'CMD-2024-1001',
+                        name: 'Fatou Diop',
+                        email: 'fatou.diop@example.com',
+                        phone: '77 123 45 67',
+                        address: 'Rue 10, Point E, Dakar',
+                        product: 'Baskets Classiques Noir',
+                        quantity: 2,
+                        size: '42',
+                        color: 'Noir',
+                        price: 25000,
+                        total: 50000,
+                        date: new Date('2024-01-15T10:30:00').toISOString(),
+                        status: 'delivered',
+                        paymentMethod: 'Wave',
+                        shippingMethod: 'Livraison Express',
+                        shippingCost: 2500,
+                        notes: 'Livrer après 18h'
+                    },
+                    {
+                        id: 'CMD-2024-1002',
+                        name: 'Moussa Sarr',
+                        email: 'moussa.sarr@example.com',
+                        phone: '76 234 56 78',
+                        address: 'Sicap Liberté 2, Dakar',
+                        product: 'Chaussures Sport Performance',
+                        quantity: 1,
+                        size: '44',
+                        color: 'Bleu',
+                        price: 32000,
+                        total: 32000,
+                        date: new Date('2024-01-20T14:45:00').toISOString(),
+                        status: 'confirmed',
+                        paymentMethod: 'Carte Bancaire',
+                        shippingMethod: 'Standard',
+                        shippingCost: 2000,
+                        notes: 'Appeler avant livraison'
+                    },
+                    {
+                        id: 'CMD-2024-1003',
+                        name: 'Aminata Diallo',
+                        email: 'amina.diallo@example.com',
+                        phone: '70 345 67 89',
+                        address: 'Mermoz, Dakar',
+                        product: 'Sandales Élégantes Dorées',
+                        quantity: 3,
+                        size: '38',
+                        color: 'Doré',
+                        price: 18000,
+                        total: 54000,
+                        date: new Date('2024-01-25T09:15:00').toISOString(),
+                        status: 'shipped',
+                        paymentMethod: 'Orange Money',
+                        shippingMethod: 'Express',
+                        shippingCost: 3000,
+                        notes: 'Cadeau pour anniversaire'
+                    },
+                    {
+                        id: 'CMD-2024-1004',
+                        name: 'Ibrahima Ndiaye',
+                        email: 'ibrahima.ndiaye@example.com',
+                        phone: '78 456 78 90',
+                        address: 'Ouakam, Dakar',
+                        product: 'Escarpins Élégants Noir',
+                        quantity: 1,
+                        size: '40',
+                        color: 'Noir',
+                        price: 22000,
+                        total: 22000,
+                        date: new Date('2024-02-01T16:20:00').toISOString(),
+                        status: 'pending',
+                        paymentMethod: 'Wave',
+                        shippingMethod: 'Standard',
+                        shippingCost: 1500,
+                        notes: ''
+                    }
+                ];
+                
+                localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+                updateStockFromOrders();
+                showNotification('4 commandes de démonstration chargées', 'success');
             }
             
+            filteredOrders = [...appData.orders];
             displayOrders();
-            updateDashboard();
+            updateOrderStats();
+            loadCustomersData();
+        }
+
+        function updateStockFromOrders() {
+            appData.orders.forEach(order => {
+                if (order.product) {
+                    const productInStock = appData.stock.find(p => 
+                        p.name.toLowerCase().includes(order.product.toLowerCase()) || 
+                        order.product.toLowerCase().includes(p.name.toLowerCase())
+                    );
+                    
+                    if (productInStock) {
+                        productInStock.sales = (productInStock.sales || 0) + (order.quantity || 1);
+                        if (productInStock.stock > 0) {
+                            productInStock.stock = Math.max(0, productInStock.stock - (order.quantity || 1));
+                        }
+                    }
+                }
+            });
+            
+            localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
         }
 
         function displayOrders() {
             const tbody = document.getElementById('ordersTableBody');
             const emptyState = document.getElementById('ordersEmptyState');
+            const pagination = document.getElementById('ordersPagination');
             
-            if (appData.orders.length === 0) {
+            if (filteredOrders.length === 0) {
                 tbody.innerHTML = '';
                 emptyState.style.display = 'block';
+                pagination.innerHTML = '';
                 return;
             }
             
             emptyState.style.display = 'none';
-            tbody.innerHTML = appData.orders.map(order => `
-                <tr>
-                    <td><strong>${order.id || 'N/A'}</strong></td>
-                    <td>${order.name || 'Non spécifié'}</td>
-                    <td>${order.email || 'Non spécifié'}</td>
-                    <td>${order.phone || 'Non spécifié'}</td>
-                    <td>${order.product || 'Non spécifié'}</td>
-                    <td>${order.quantity || 1}</td>
-                    <td>${order.total ? order.total.toLocaleString() + ' FCFA' : 'N/A'}</td>
-                    <td>${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : 'N/A'}</td>
-                    <td>
-                        <span class="badge order-status-${order.status || 'pending'}">
-                            ${getOrderStatusText(order.status)}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-custom" onclick="viewOrderDetails('${order.id}')">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-success" onclick="updateOrderStatus('${order.id}', 'confirmed')">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder('${order.id}')">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
+            
+            const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+            const startIndex = (currentOrderPage - 1) * ordersPerPage;
+            const endIndex = startIndex + ordersPerPage;
+            const pageOrders = filteredOrders.slice(startIndex, endIndex);
+            
+            tbody.innerHTML = pageOrders.map(order => {
+                const isNew = isOrderNew(order.date);
+                const rowClass = isNew ? 'new-order' : '';
+                const unitPrice = order.price || (order.total / (order.quantity || 1)) || 0;
+                
+                return `
+                    <tr class="${rowClass}" id="order-${order.id}">
+                        <td>
+                            <strong>${order.id || 'CMD-0000'}</strong>
+                            ${isNew ? '<span class="badge bg-success ms-1">Nouveau</span>' : ''}
+                        </td>
+                        <td>
+                            <strong>${order.name || 'Client'}</strong>
+                            <br><small class="text-muted">${order.email || 'email@example.com'}</small>
+                        </td>
+                        <td>
+                            ${order.phone || '00 00 00 00'}
+                            <br><small>${order.address || 'Adresse'}</small>
+                        </td>
+                        <td>
+                            ${order.product || 'Produit'}
+                            ${order.size ? `<br><small>Taille: ${order.size}</small>` : ''}
+                        </td>
+                        <td>
+                            Quantité: <strong>${order.quantity || 1}</strong>
+                            <br>Prix unitaire: <strong>${unitPrice.toLocaleString()} FCFA</strong>
+                            ${order.color ? `<br><small>Couleur: ${order.color}</small>` : ''}
+                        </td>
+                        <td><strong>${order.total ? order.total.toLocaleString() + ' FCFA' : '0 FCFA'}</strong></td>
+                        <td>
+                            ${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : new Date().toLocaleDateString('fr-FR')}
+                            <br><small>${order.date ? new Date(order.date).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}</small>
+                        </td>
+                        <td>
+                            <span class="badge badge-${order.status || 'pending'}">
+                                ${getOrderStatusText(order.status)}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-custom" onclick="viewOrderDetails('${order.id}')" title="Voir détails">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="updateOrderStatus('${order.id}', 'confirmed')" title="Confirmer">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-outline-danger" onclick="deleteOrder('${order.id}')" title="Supprimer">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            generatePagination(pagination, totalPages, currentOrderPage, 'order');
+        }
+
+        function isOrderNew(orderDate) {
+            if (!orderDate) return false;
+            const orderTime = new Date(orderDate).getTime();
+            const now = new Date().getTime();
+            const hoursDiff = (now - orderTime) / (1000 * 60 * 60);
+            return hoursDiff < 24;
         }
 
         function getOrderStatusText(status) {
@@ -1334,13 +2112,288 @@
             return statusMap[status] || 'En attente';
         }
 
+        function updateOrderStats() {
+            const totalOrders = appData.orders.length;
+            const pendingOrders = appData.orders.filter(o => o.status === 'pending').length;
+            const confirmedOrders = appData.orders.filter(o => o.status === 'confirmed').length;
+            const deliveredOrders = appData.orders.filter(o => o.status === 'delivered').length;
+            const totalRevenue = appData.orders.reduce((sum, order) => sum + (order.total || 0), 0);
+            const avgOrderValue = totalOrders > 0 ? Math.round(totalRevenue / totalOrders) : 0;
+            
+            document.getElementById('totalOrdersCount').textContent = totalOrders;
+            document.getElementById('pendingOrdersCount').textContent = pendingOrders;
+            document.getElementById('confirmedOrdersCount').textContent = confirmedOrders;
+            document.getElementById('revenueOrders').textContent = totalRevenue.toLocaleString() + ' FCFA';
+            document.getElementById('avgOrderValue').textContent = avgOrderValue.toLocaleString() + ' FCFA';
+            
+            document.getElementById('pendingBadge').textContent = pendingOrders;
+            document.getElementById('confirmedBadge').textContent = confirmedOrders;
+            document.getElementById('deliveredBadge').textContent = deliveredOrders;
+            
+            updateDashboard();
+        }
+
+        function filterOrders() {
+            const searchTerm = document.getElementById('orderSearch').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const periodFilter = document.getElementById('periodFilter').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            filteredOrders = appData.orders.filter(order => {
+                const matchesSearch = !searchTerm || 
+                    (order.name && order.name.toLowerCase().includes(searchTerm)) ||
+                    (order.email && order.email.toLowerCase().includes(searchTerm)) ||
+                    (order.phone && order.phone.includes(searchTerm)) ||
+                    (order.id && order.id.toLowerCase().includes(searchTerm)) ||
+                    (order.product && order.product.toLowerCase().includes(searchTerm));
+                
+                const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
+                
+                let matchesPeriod = true;
+                if (periodFilter !== 'all' && order.date) {
+                    const orderDate = new Date(order.date);
+                    const now = new Date();
+                    
+                    switch(periodFilter) {
+                        case 'today':
+                            matchesPeriod = orderDate.toDateString() === now.toDateString();
+                            break;
+                        case 'week':
+                            const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                            matchesPeriod = orderDate >= weekAgo;
+                            break;
+                        case 'month':
+                            const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+                            matchesPeriod = orderDate >= monthAgo;
+                            break;
+                        case 'year':
+                            const yearAgo = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+                            matchesPeriod = orderDate >= yearAgo;
+                            break;
+                    }
+                }
+                
+                let matchesDate = true;
+                if (startDate && order.date) {
+                    const orderDate = new Date(order.date).toISOString().split('T')[0];
+                    matchesDate = orderDate >= startDate;
+                }
+                if (endDate && order.date) {
+                    const orderDate = new Date(order.date).toISOString().split('T')[0];
+                    matchesDate = matchesDate && orderDate <= endDate;
+                }
+                
+                return matchesSearch && matchesStatus && matchesPeriod && matchesDate;
+            });
+            
+            currentOrderPage = 1;
+            displayOrders();
+        }
+
+        function filterByStatus(status) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (status === 'all') {
+                filteredOrders = [...appData.orders];
+            } else {
+                filteredOrders = appData.orders.filter(order => order.status === status);
+            }
+            
+            currentOrderPage = 1;
+            displayOrders();
+        }
+
+        function clearFilters() {
+            document.getElementById('orderSearch').value = '';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('periodFilter').value = 'all';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.filter-btn')[0].classList.add('active');
+            
+            filteredOrders = [...appData.orders];
+            currentOrderPage = 1;
+            displayOrders();
+        }
+
+        function generatePagination(container, totalPages, currentPage, type) {
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            paginationHTML += `
+                <button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" 
+                        onclick="${type === 'order' ? 'changeOrderPage' : 'changeCustomerPage'}(${currentPage - 1})"
+                        ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHTML += `
+                    <button class="page-btn ${i === currentPage ? 'active' : ''}" 
+                            onclick="${type === 'order' ? 'changeOrderPage' : 'changeCustomerPage'}(${i})">
+                        ${i}
+                    </button>
+                `;
+            }
+            
+            paginationHTML += `
+                <button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" 
+                        onclick="${type === 'order' ? 'changeOrderPage' : 'changeCustomerPage'}(${currentPage + 1})"
+                        ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            paginationHTML += `
+                <div class="text-muted ms-3">
+                    ${type === 'order' ? filteredOrders.length : filteredCustomers.length} résultats • Page ${currentPage}/${totalPages}
+                </div>
+            `;
+            
+            container.innerHTML = paginationHTML;
+        }
+
+        function changeOrderPage(page) {
+            if (page >= 1 && page <= Math.ceil(filteredOrders.length / ordersPerPage)) {
+                currentOrderPage = page;
+                displayOrders();
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        function viewOrderDetails(orderId) {
+            const order = appData.orders.find(o => o.id === orderId);
+            if (!order) return;
+            
+            document.getElementById('orderIdTitle').textContent = `#${order.id}`;
+            document.getElementById('orderCustomerName').textContent = order.name || 'Client';
+            document.getElementById('orderCustomerEmail').textContent = order.email || 'email@example.com';
+            document.getElementById('orderCustomerPhone').textContent = order.phone || '00 00 00 00';
+            document.getElementById('orderCustomerAddress').textContent = order.address || 'Adresse';
+            document.getElementById('orderDateFull').textContent = order.date ? 
+                `${new Date(order.date).toLocaleDateString('fr-FR')} à ${new Date(order.date).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}` : 
+                'Date inconnue';
+            document.getElementById('orderStatusFull').innerHTML = `
+                <span class="badge badge-${order.status || 'pending'}">
+                    ${getOrderStatusText(order.status)}
+                </span>
+            `;
+            document.getElementById('orderPaymentMethod').textContent = order.paymentMethod || 'Non spécifié';
+            document.getElementById('orderShipping').textContent = order.shippingMethod || 'Standard';
+            document.getElementById('orderNotes').textContent = order.notes || 'Aucune';
+            
+            const itemsTable = document.getElementById('orderItemsTable');
+            const unitPrice = order.price || (order.total / (order.quantity || 1)) || 0;
+            itemsTable.innerHTML = `
+                <tr>
+                    <td>${order.product || 'Produit'}</td>
+                    <td>${order.quantity || 1}</td>
+                    <td>${unitPrice.toLocaleString()} FCFA</td>
+                    <td>${order.total ? order.total.toLocaleString() + ' FCFA' : '0 FCFA'}</td>
+                </tr>
+            `;
+            
+            const subtotal = order.total || 0;
+            const shippingCost = order.shippingCost || 0;
+            const total = subtotal + shippingCost;
+            
+            document.getElementById('orderSubtotal').textContent = subtotal.toLocaleString();
+            document.getElementById('orderShippingCost').textContent = shippingCost.toLocaleString();
+            document.getElementById('orderTotalFull').textContent = total.toLocaleString();
+            
+            const timeline = document.getElementById('orderTimeline');
+            const timelineHTML = `
+                <div class="timeline-item">
+                    <div class="timeline-date">${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : 'Date inconnue'}</div>
+                    <div class="timeline-content">
+                        Commande créée
+                    </div>
+                </div>
+                ${order.status === 'confirmed' ? `
+                <div class="timeline-item">
+                    <div class="timeline-date">${new Date().toLocaleDateString('fr-FR')}</div>
+                    <div class="timeline-content">
+                        Commande confirmée
+                    </div>
+                </div>
+                ` : ''}
+                ${order.status === 'delivered' ? `
+                <div class="timeline-item">
+                    <div class="timeline-date">${new Date().toLocaleDateString('fr-FR')}</div>
+                    <div class="timeline-content">
+                        Commande livrée
+                    </div>
+                </div>
+                ` : ''}
+            `;
+            timeline.innerHTML = timelineHTML;
+            
+            window.currentOrderId = orderId;
+            
+            new bootstrap.Modal(document.getElementById('orderDetailsModal')).show();
+        }
+
+        function updateOrderStatusModal() {
+            bootstrap.Modal.getInstance(document.getElementById('orderDetailsModal')).hide();
+            setTimeout(() => {
+                new bootstrap.Modal(document.getElementById('orderStatusModal')).show();
+            }, 300);
+        }
+
+        function saveOrderStatus() {
+            const newStatus = document.getElementById('newOrderStatus').value;
+            const comment = document.getElementById('statusComment').value;
+            const notifyCustomer = document.getElementById('notifyCustomer').checked;
+            
+            updateOrderStatus(window.currentOrderId, newStatus);
+            
+            const order = appData.orders.find(o => o.id === window.currentOrderId);
+            if (order) {
+                if (!order.history) order.history = [];
+                order.history.push({
+                    date: new Date().toISOString(),
+                    status: newStatus,
+                    comment: comment
+                });
+                localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+            }
+            
+            if (notifyCustomer && order && order.email) {
+                showNotification(`Notification envoyée à ${order.email}`, 'success');
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('orderStatusModal')).hide();
+            showNotification('Statut mis à jour avec succès', 'success');
+        }
+
+        function printOrder() {
+            window.print();
+        }
+
         function updateOrderStatus(orderId, newStatus) {
             const order = appData.orders.find(o => o.id === orderId);
             if (order) {
                 order.status = newStatus;
                 localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
                 displayOrders();
-                updateDashboard();
+                updateOrderStats();
                 showNotification(`Statut de la commande ${orderId} mis à jour`, 'success');
             }
         }
@@ -1349,17 +2402,298 @@
             if (confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')) {
                 appData.orders = appData.orders.filter(o => o.id !== orderId);
                 localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+                filteredOrders = filteredOrders.filter(o => o.id !== orderId);
                 displayOrders();
-                updateDashboard();
+                updateOrderStats();
                 showNotification('Commande supprimée', 'success');
             }
         }
 
-        function viewOrderDetails(orderId) {
-            const order = appData.orders.find(o => o.id === orderId);
-            if (order) {
-                alert(`Détails de la commande:\n\nID: ${order.id}\nClient: ${order.name}\nEmail: ${order.email}\nTéléphone: ${order.phone}\nProduit: ${order.product}\nQuantité: ${order.quantity}\nTotal: ${order.total ? order.total.toLocaleString() + ' FCFA' : 'N/A'}\nDate: ${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : 'N/A'}\nStatut: ${getOrderStatusText(order.status)}`);
+        function exportOrders() {
+            const data = {
+                orders: filteredOrders,
+                exportDate: new Date().toISOString(),
+                total: filteredOrders.reduce((sum, order) => sum + (order.total || 0), 0)
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `commandes-daleuuyurafett-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Commandes exportées avec succès', 'success');
+        }
+
+        // =============================================
+        // FONCTIONS POUR AJOUTER DES COMMANDES
+        // =============================================
+
+        function showAddOrderForm() {
+            const modalHTML = `
+                <div class="modal fade" id="addOrderModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Ajouter une nouvelle commande</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addOrderForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Nom du client *</label>
+                                            <input type="text" class="form-control" id="orderCustomerName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email *</label>
+                                            <input type="email" class="form-control" id="orderCustomerEmail" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Téléphone</label>
+                                            <input type="text" class="form-control" id="orderCustomerPhone">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Adresse</label>
+                                            <input type="text" class="form-control" id="orderCustomerAddress">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Produit *</label>
+                                            <select class="form-select" id="orderProduct" required>
+                                                <option value="">Sélectionner un produit</option>
+                                                ${appData.stock.map(product => 
+                                                    `<option value="${product.name}">${product.name} (${product.price.toLocaleString()} FCFA) - Stock: ${product.stock}</option>`
+                                                ).join('')}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label">Quantité *</label>
+                                            <input type="number" class="form-control" id="orderQuantity" min="1" value="1" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label">Taille</label>
+                                            <input type="text" class="form-control" id="orderSize" placeholder="ex: 42">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Couleur</label>
+                                            <input type="text" class="form-control" id="orderColor" placeholder="ex: Noir">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Méthode de paiement</label>
+                                            <select class="form-select" id="orderPaymentMethod">
+                                                <option value="Wave">Wave</option>
+                                                <option value="Orange Money">Orange Money</option>
+                                                <option value="Carte Bancaire">Carte Bancaire</option>
+                                                <option value="Espèces">Espèces</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Méthode de livraison</label>
+                                            <select class="form-select" id="orderShippingMethod">
+                                                <option value="Standard">Standard (2,000 FCFA)</option>
+                                                <option value="Express">Express (3,000 FCFA)</option>
+                                                <option value="Livraison Express">Livraison Express (2,500 FCFA)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Remarques</label>
+                                            <textarea class="form-control" id="orderNotes" rows="2" placeholder="Notes supplémentaires..."></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-custom" onclick="submitNewOrder()">
+                                    <i class="fas fa-plus me-1"></i> Ajouter la commande
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            let modal = document.getElementById('addOrderModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.innerHTML = modalHTML;
+                document.body.appendChild(modal);
             }
+            
+            new bootstrap.Modal(document.getElementById('addOrderModal')).show();
+        }
+
+        function submitNewOrder() {
+            const customerData = {
+                name: document.getElementById('orderCustomerName').value,
+                email: document.getElementById('orderCustomerEmail').value,
+                phone: document.getElementById('orderCustomerPhone').value,
+                address: document.getElementById('orderCustomerAddress').value,
+                product: document.getElementById('orderProduct').value,
+                quantity: parseInt(document.getElementById('orderQuantity').value) || 1,
+                size: document.getElementById('orderSize').value,
+                color: document.getElementById('orderColor').value,
+                paymentMethod: document.getElementById('orderPaymentMethod').value,
+                shippingMethod: document.getElementById('orderShippingMethod').value,
+                notes: document.getElementById('orderNotes').value
+            };
+            
+            if (!customerData.name || !customerData.email || !customerData.product) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            simulateOrderFromProducts(customerData.product, customerData);
+            bootstrap.Modal.getInstance(document.getElementById('addOrderModal')).hide();
+        }
+
+        function simulateOrderFromProducts(productName, customerData) {
+            const product = appData.stock.find(p => 
+                p.name.toLowerCase().includes(productName.toLowerCase()) || 
+                productName.toLowerCase().includes(p.name.toLowerCase())
+            );
+            
+            if (!product) {
+                showNotification('Produit non trouvé dans le stock', 'error');
+                return;
+            }
+            
+            if (product.stock <= 0) {
+                showNotification(`Stock insuffisant pour ${product.name}`, 'error');
+                return;
+            }
+            
+            const newOrder = {
+                id: `CMD-${new Date().getFullYear()}-${String(appData.orders.length + 1001).padStart(4, '0')}`,
+                name: customerData.name || 'Client',
+                email: customerData.email || 'client@example.com',
+                phone: customerData.phone || '',
+                address: customerData.address || '',
+                product: product.name,
+                quantity: customerData.quantity || 1,
+                size: customerData.size || '',
+                color: customerData.color || '',
+                price: product.price,
+                total: product.price * (customerData.quantity || 1),
+                date: new Date().toISOString(),
+                status: 'pending',
+                paymentMethod: customerData.paymentMethod || 'Wave',
+                shippingMethod: customerData.shippingMethod || 'Standard',
+                shippingCost: customerData.shippingMethod === 'Express' ? 3000 : 2000,
+                notes: customerData.notes || ''
+            };
+            
+            appData.orders.push(newOrder);
+            localStorage.setItem('daleuuyurafett_orders', JSON.stringify(appData.orders));
+            
+            product.stock = Math.max(0, product.stock - (customerData.quantity || 1));
+            product.sales = (product.sales || 0) + (customerData.quantity || 1);
+            localStorage.setItem('daleuuyurafett_stock', JSON.stringify(appData.stock));
+            
+            saveCustomerFromOrder(newOrder);
+            
+            filteredOrders = [...appData.orders];
+            displayOrders();
+            updateOrderStats();
+            displayStock();
+            
+            showNotification(`Commande ${newOrder.id} ajoutée avec succès !`, 'success');
+            
+            return newOrder;
+        }
+
+        function loadOrdersFromProductsHTML() {
+            const ordersFromProducts = [
+                {
+                    name: 'Jean Dupont',
+                    email: 'jean.dupont@example.com',
+                    phone: '77 111 22 33',
+                    address: 'Almadies, Dakar',
+                    product: 'Sandales Élégantes Dorées',
+                    quantity: 2,
+                    size: '39',
+                    color: 'Doré',
+                    paymentMethod: 'Orange Money',
+                    shippingMethod: 'Express',
+                    notes: 'Livraison rapide souhaitée'
+                },
+                {
+                    name: 'Marie Curie',
+                    email: 'marie.curie@example.com',
+                    phone: '76 222 33 44',
+                    address: 'Sicap Baobab, Dakar',
+                    product: 'Chaussures Sport Performance',
+                    quantity: 1,
+                    size: '40',
+                    color: 'Bleu',
+                    paymentMethod: 'Carte Bancaire',
+                    shippingMethod: 'Standard',
+                    notes: ''
+                }
+            ];
+            
+            let importedCount = 0;
+            
+            ordersFromProducts.forEach(orderData => {
+                const result = simulateOrderFromProducts(orderData.product, orderData);
+                if (result) importedCount++;
+            });
+            
+            showNotification(`${importedCount} commande(s) importée(s) depuis products.html`, 'success');
+        }
+
+        function saveCustomerFromOrder(order) {
+            if (!order.email) return;
+            
+            const existingCustomer = appData.customers.find(c => c.email === order.email);
+            
+            if (existingCustomer) {
+                if (!existingCustomer.orders.find(o => o.id === order.id)) {
+                    existingCustomer.orders.push({
+                        id: order.id,
+                        date: order.date,
+                        total: order.total || 0,
+                        status: order.status,
+                        product: order.product
+                    });
+                    
+                    existingCustomer.totalSpent += (order.total || 0);
+                    if (order.date > existingCustomer.lastOrder) {
+                        existingCustomer.lastOrder = order.date;
+                    }
+                }
+            } else {
+                const newCustomer = {
+                    name: order.name,
+                    email: order.email,
+                    phone: order.phone,
+                    address: order.address,
+                    orders: [{
+                        id: order.id,
+                        date: order.date,
+                        total: order.total || 0,
+                        status: order.status,
+                        product: order.product
+                    }],
+                    firstOrder: order.date,
+                    lastOrder: order.date,
+                    totalSpent: order.total || 0
+                };
+                
+                appData.customers.push(newCustomer);
+            }
+            
+            localStorage.setItem('daleuuyurafett_customers', JSON.stringify(appData.customers));
         }
 
         // =============================================
@@ -1367,67 +2701,377 @@
         // =============================================
 
         function loadCustomersData() {
-            // Générer la liste des clients à partir des commandes
-            const customersMap = new Map();
+            const savedCustomers = localStorage.getItem('daleuuyurafett_customers');
             
-            appData.orders.forEach(order => {
-                if (order.email) {
-                    if (!customersMap.has(order.email)) {
-                        customersMap.set(order.email, {
-                            name: order.name,
-                            email: order.email,
-                            phone: order.phone,
-                            orders: 0,
-                            totalSpent: 0,
-                            lastOrder: order.date
-                        });
+            if (savedCustomers) {
+                appData.customers = JSON.parse(savedCustomers);
+            } else {
+                const customersMap = new Map();
+                
+                appData.orders.forEach(order => {
+                    if (order.email) {
+                        if (!customersMap.has(order.email)) {
+                            customersMap.set(order.email, {
+                                name: order.name,
+                                email: order.email,
+                                phone: order.phone,
+                                address: order.address,
+                                orders: [],
+                                firstOrder: order.date,
+                                lastOrder: order.date,
+                                totalSpent: 0
+                            });
+                        }
+                        
+                        const customer = customersMap.get(order.email);
+                        if (!customer.orders.find(o => o.id === order.id)) {
+                            customer.orders.push({
+                                id: order.id,
+                                date: order.date,
+                                total: order.total || 0,
+                                status: order.status,
+                                product: order.product
+                            });
+                            
+                            customer.totalSpent += (order.total || 0);
+                            if (order.date > customer.lastOrder) {
+                                customer.lastOrder = order.date;
+                            }
+                            if (!customer.firstOrder || order.date < customer.firstOrder) {
+                                customer.firstOrder = order.date;
+                            }
+                        }
                     }
-                    
-                    const customer = customersMap.get(order.email);
-                    customer.orders += 1;
-                    customer.totalSpent += (order.total || 0);
-                    if (order.date > customer.lastOrder) {
-                        customer.lastOrder = order.date;
-                    }
-                }
-            });
+                });
+                
+                appData.customers = Array.from(customersMap.values());
+                localStorage.setItem('daleuuyurafett_customers', JSON.stringify(appData.customers));
+            }
             
-            appData.customers = Array.from(customersMap.values());
+            filteredCustomers = [...appData.customers];
             displayCustomers();
+            updateCustomerStats();
         }
 
         function displayCustomers() {
             const tbody = document.getElementById('customersTableBody');
             const emptyState = document.getElementById('customersEmptyState');
+            const pagination = document.getElementById('customersPagination');
             
-            if (appData.customers.length === 0) {
+            if (filteredCustomers.length === 0) {
                 tbody.innerHTML = '';
                 emptyState.style.display = 'block';
+                pagination.innerHTML = '';
                 return;
             }
             
             emptyState.style.display = 'none';
-            tbody.innerHTML = appData.customers.map(customer => `
-                <tr>
-                    <td>
-                        <strong>${customer.name}</strong>
-                    </td>
-                    <td>${customer.email}</td>
-                    <td>${customer.phone || 'Non spécifié'}</td>
-                    <td>${customer.orders}</td>
-                    <td>${customer.totalSpent.toLocaleString()} FCFA</td>
-                    <td>${customer.lastOrder ? new Date(customer.lastOrder).toLocaleDateString('fr-FR') : 'N/A'}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-custom" onclick="contactCustomer('${customer.email}')">
-                            <i class="fas fa-envelope"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
+            
+            const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
+            const startIndex = (currentCustomerPage - 1) * customersPerPage;
+            const endIndex = startIndex + customersPerPage;
+            const pageCustomers = filteredCustomers.slice(startIndex, endIndex);
+            
+            tbody.innerHTML = pageCustomers.map(customer => {
+                const orderCount = customer.orders.length;
+                const avgOrderValue = orderCount > 0 ? Math.round(customer.totalSpent / orderCount) : 0;
+                const loyaltyLevel = getLoyaltyLevel(customer.totalSpent);
+                const daysSinceLastOrder = customer.lastOrder ? 
+                    Math.floor((new Date() - new Date(customer.lastOrder)) / (1000 * 60 * 60 * 24)) : 
+                    null;
+                const isInactive = daysSinceLastOrder > 30;
+                
+                return `
+                    <tr onclick="selectCustomer('${customer.email}')" style="cursor: pointer;">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle bg-gradient me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--gold-color), #f4d03f); display: flex; align-items: center; justify-content: center; color: white;">
+                                    ${customer.name ? customer.name.charAt(0).toUpperCase() : 'C'}
+                                </div>
+                                <div>
+                                    <strong>${customer.name || 'Client sans nom'}</strong>
+                                    <br><small class="text-muted">${getLoyaltyLabel(loyaltyLevel)}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div><i class="fas fa-envelope me-1"></i>${customer.email}</div>
+                            ${customer.phone ? `<div><i class="fas fa-phone me-1"></i>${customer.phone}</div>` : ''}
+                        </td>
+                        <td>
+                            <div><strong>${orderCount}</strong> commande(s)</div>
+                            <small>
+                                ${customer.lastOrder ? 
+                                    `Dernière: ${new Date(customer.lastOrder).toLocaleDateString('fr-FR')}` : 
+                                    'Aucune commande'}
+                                ${isInactive ? '<span class="badge bg-warning ms-1">Inactif</span>' : ''}
+                            </small>
+                        </td>
+                        <td>
+                            <div><strong>${customer.totalSpent.toLocaleString()} FCFA</strong></div>
+                            <small>Moyenne: ${avgOrderValue.toLocaleString()} FCFA</small>
+                        </td>
+                        <td>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-gradient" style="width: ${Math.min(customer.totalSpent / 100000 * 100, 100)}%; background: linear-gradient(135deg, var(--gold-color), #f4d03f);"></div>
+                            </div>
+                            <small>${loyaltyLevel} points</small>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-custom" onclick="event.stopPropagation(); contactCustomer('${customer.email}')" title="Contacter">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                                <button class="btn btn-outline-info" onclick="event.stopPropagation(); viewCustomerDetails('${customer.email}')" title="Voir détails">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            generatePagination(pagination, totalPages, currentCustomerPage, 'customer');
+        }
+
+        function getLoyaltyLevel(totalSpent) {
+            if (totalSpent >= 500000) return 'Diamant';
+            if (totalSpent >= 200000) return 'Or';
+            if (totalSpent >= 100000) return 'Argent';
+            if (totalSpent >= 50000) return 'Bronze';
+            return 'Nouveau';
+        }
+
+        function getLoyaltyLabel(level) {
+            const labels = {
+                'Diamant': '💎 Diamant',
+                'Or': '🥇 Or',
+                'Argent': '🥈 Argent',
+                'Bronze': '🥉 Bronze',
+                'Nouveau': '🆕 Nouveau client'
+            };
+            return labels[level] || level;
+        }
+
+        function updateCustomerStats() {
+            const totalCustomers = appData.customers.length;
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            
+            const newCustomers = appData.customers.filter(customer => 
+                customer.firstOrder && new Date(customer.firstOrder) > thirtyDaysAgo
+            ).length;
+            
+            const repeatCustomers = appData.customers.filter(customer => 
+                customer.orders.length > 1
+            ).length;
+            
+            const totalSpent = appData.customers.reduce((sum, customer) => sum + customer.totalSpent, 0);
+            const avgCustomerValue = totalCustomers > 0 ? Math.round(totalSpent / totalCustomers) : 0;
+            
+            document.getElementById('totalCustomersCount').textContent = totalCustomers;
+            document.getElementById('newCustomersCount').textContent = newCustomers;
+            document.getElementById('repeatCustomersCount').textContent = repeatCustomers;
+            document.getElementById('avgCustomerValue').textContent = avgCustomerValue.toLocaleString() + ' FCFA';
+            
+            updateDashboard();
+        }
+
+        function filterCustomers() {
+            const searchTerm = document.getElementById('customerSearch').value.toLowerCase();
+            const typeFilter = document.getElementById('customerTypeFilter').value;
+            const sortBy = document.getElementById('customerSort').value;
+            
+            filteredCustomers = appData.customers.filter(customer => {
+                const matchesSearch = !searchTerm || 
+                    (customer.name && customer.name.toLowerCase().includes(searchTerm)) ||
+                    (customer.email && customer.email.toLowerCase().includes(searchTerm)) ||
+                    (customer.phone && customer.phone.includes(searchTerm));
+                
+                let matchesType = true;
+                const thirtyDaysAgo = new Date();
+                thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                const sixtyDaysAgo = new Date();
+                sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+                
+                switch(typeFilter) {
+                    case 'new':
+                        matchesType = customer.firstOrder && new Date(customer.firstOrder) > thirtyDaysAgo;
+                        break;
+                    case 'repeat':
+                        matchesType = customer.orders.length > 1;
+                        break;
+                    case 'inactive':
+                        matchesType = !customer.lastOrder || new Date(customer.lastOrder) < sixtyDaysAgo;
+                        break;
+                }
+                
+                return matchesSearch && matchesType;
+            });
+            
+            filteredCustomers.sort((a, b) => {
+                switch(sortBy) {
+                    case 'name':
+                        return (a.name || '').localeCompare(b.name || '');
+                    case 'orders':
+                        return b.orders.length - a.orders.length;
+                    case 'spent':
+                        return b.totalSpent - a.totalSpent;
+                    case 'recent':
+                    default:
+                        return new Date(b.lastOrder || 0) - new Date(a.lastOrder || 0);
+                }
+            });
+            
+            currentCustomerPage = 1;
+            displayCustomers();
+        }
+
+        function changeCustomerPage(page) {
+            if (page >= 1 && page <= Math.ceil(filteredCustomers.length / customersPerPage)) {
+                currentCustomerPage = page;
+                displayCustomers();
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        function selectCustomer(email) {
+            selectedCustomer = appData.customers.find(c => c.email === email);
+            if (!selectedCustomer) return;
+            
+            document.getElementById('customerAvatar').innerHTML = 
+                `<i class="fas fa-user"></i>`;
+            document.getElementById('customerNameDisplay').textContent = selectedCustomer.name || 'Client sans nom';
+            document.getElementById('customerTier').textContent = getLoyaltyLevel(selectedCustomer.totalSpent);
+            document.getElementById('customerEmailDisplay').textContent = selectedCustomer.email;
+            document.getElementById('customerPhoneDisplay').textContent = selectedCustomer.phone || 'Non spécifié';
+            document.getElementById('customerOrdersCount').textContent = selectedCustomer.orders.length;
+            document.getElementById('customerTotalSpent').textContent = selectedCustomer.totalSpent.toLocaleString() + ' FCFA';
+            document.getElementById('customerSince').textContent = selectedCustomer.firstOrder ? 
+                new Date(selectedCustomer.firstOrder).toLocaleDateString('fr-FR') : '-';
+            document.getElementById('customerLastOrder').textContent = selectedCustomer.lastOrder ? 
+                new Date(selectedCustomer.lastOrder).toLocaleDateString('fr-FR') : '-';
+            
+            document.getElementById('customerProfileSection').style.display = 'block';
+        }
+
+        function closeCustomerProfile() {
+            selectedCustomer = null;
+            document.getElementById('customerProfileSection').style.display = 'none';
+        }
+
+        function contactSelectedCustomer() {
+            if (selectedCustomer && selectedCustomer.email) {
+                contactCustomer(selectedCustomer.email);
+            }
         }
 
         function contactCustomer(email) {
             window.open(`mailto:${email}`, '_blank');
+        }
+
+        function viewCustomerDetails(email) {
+            const customer = appData.customers.find(c => c.email === email);
+            if (customer) {
+                selectCustomer(email);
+                document.getElementById('customerProfileSection').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function viewCustomerOrders() {
+            if (selectedCustomer) {
+                const customerOrders = appData.orders.filter(order => order.email === selectedCustomer.email);
+                
+                if (customerOrders.length > 0) {
+                    let ordersHTML = `
+                        <table class="table table-sm mt-3">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Produit</th>
+                                    <th>Total</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    customerOrders.forEach(order => {
+                        ordersHTML += `
+                            <tr>
+                                <td>#${order.id}</td>
+                                <td>${order.date ? new Date(order.date).toLocaleDateString('fr-FR') : '-'}</td>
+                                <td>${order.product || '-'}</td>
+                                <td>${order.total ? order.total.toLocaleString() + ' FCFA' : '-'}</td>
+                                <td><span class="badge badge-${order.status || 'pending'}">${getOrderStatusText(order.status)}</span></td>
+                            </tr>
+                        `;
+                    });
+                    
+                    ordersHTML += `</tbody></table>`;
+                    
+                    const modalContent = `
+                        <div class="modal-header">
+                            <h5 class="modal-title">Commandes de ${selectedCustomer.name}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="mb-3">Total de ${customerOrders.length} commande(s)</p>
+                            ${ordersHTML}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    `;
+                    
+                    const modalId = 'customerOrdersModal';
+                    let modal = document.getElementById(modalId);
+                    if (!modal) {
+                        modal = document.createElement('div');
+                        modal.className = 'modal fade';
+                        modal.id = modalId;
+                        modal.innerHTML = `
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    ${modalContent}
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                    } else {
+                        modal.querySelector('.modal-content').innerHTML = modalContent;
+                    }
+                    
+                    new bootstrap.Modal(modal).show();
+                } else {
+                    showNotification('Ce client n\'a pas de commandes', 'info');
+                }
+            }
+        }
+
+        function exportCustomers() {
+            const data = {
+                customers: filteredCustomers,
+                exportDate: new Date().toISOString(),
+                summary: {
+                    totalCustomers: filteredCustomers.length,
+                    totalRevenue: filteredCustomers.reduce((sum, customer) => sum + customer.totalSpent, 0),
+                    avgOrderValue: filteredCustomers.reduce((sum, customer) => {
+                        return sum + (customer.orders.length > 0 ? customer.totalSpent / customer.orders.length : 0);
+                    }, 0) / filteredCustomers.length
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `clients-daleuuyurafett-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Clients exportés avec succès', 'success');
         }
 
         // =============================================
@@ -1497,13 +3141,11 @@
             if (message) {
                 currentMessageId = messageId;
                 
-                // Marquer comme lu
                 message.status = 'read';
                 localStorage.setItem('daleuuyurafett_messages', JSON.stringify(appData.messages));
                 displayMessages();
                 updateDashboard();
                 
-                // Afficher le modal
                 document.getElementById('messageCustomerName').textContent = message.name;
                 document.getElementById('messageCustomerEmail').textContent = message.email;
                 document.getElementById('messageSubject').textContent = message.subject;
@@ -1513,7 +3155,6 @@
                     new Date(message.timestamp).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) : 
                     'Date inconnue';
                 
-                // Pré-remplir le formulaire de réponse
                 document.getElementById('replySubject').value = `RE: ${message.subject}`;
                 document.getElementById('replyMessage').value = `Bonjour ${message.name},\n\n`;
                 
@@ -1532,7 +3173,6 @@
                 return;
             }
             
-            // Enregistrer la réponse (simulation)
             const originalMessage = appData.messages.find(m => m.id === currentMessageId);
             if (originalMessage) {
                 originalMessage.replied = true;
@@ -1589,7 +3229,6 @@
         }
 
         function updateDashboard() {
-            // Mettre à jour les statistiques
             const totalRevenue = appData.orders.reduce((sum, order) => sum + (order.total || 0), 0);
             const pendingOrders = appData.orders.filter(order => order.status === 'pending').length;
             const unreadMessages = appData.messages.filter(message => message.status === 'unread').length;
@@ -1600,20 +3239,17 @@
             document.getElementById('dashboardMessages').textContent = appData.messages.length;
             document.getElementById('dashboardStock').textContent = appData.stock.length;
 
-            // Mettre à jour les badges
             document.getElementById('ordersBadge').textContent = pendingOrders;
             document.getElementById('messagesBadge').textContent = unreadMessages;
             document.getElementById('stockBadge').textContent = lowStockProducts;
             document.getElementById('customersBadge').textContent = appData.customers.length;
 
-            // Mettre à jour l'activité récente
             updateRecentActivity();
         }
 
         function updateRecentActivity() {
             const container = document.getElementById('recentActivity');
             
-            // Combiner commandes et messages récents
             const recentActivities = [
                 ...appData.orders.slice(0, 3).map(order => ({
                     type: 'order',
@@ -1674,7 +3310,6 @@
         // =============================================
 
         function showNotification(message, type = 'info') {
-            // Créer une alerte Bootstrap simple
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} alert-dismissible fade show position-fixed`;
             alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
@@ -1711,7 +3346,6 @@
             showNotification('Données exportées avec succès', 'success');
         }
 
-        // Charger les données au démarrage
         setTimeout(() => {
             if (document.getElementById('adminPage').style.display !== 'none') {
                 refreshDashboard();
