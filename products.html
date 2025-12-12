@@ -956,29 +956,49 @@
             
             <form id="orderForm">
                 <div class="form-group">
-                    <label class="form-label" for="customerName">Nom complet</label>
+                    <label class="form-label" for="customerName">Nom complet *</label>
                     <input type="text" class="form-control" id="customerName" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="customerPhone">Numéro de téléphone</label>
-                    <input type="tel" class="form-control" id="customerPhone" required>
+                    <label class="form-label" for="customerEmail">Adresse Email *</label>
+                    <input type="email" class="form-control" id="customerEmail" required placeholder="votre@email.com">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="customerAddress">Adresse de livraison</label>
-                    <textarea class="form-control" id="customerAddress" rows="3" required></textarea>
+                    <label class="form-label" for="customerPhone">Numéro de téléphone *</label>
+                    <input type="tel" class="form-control" id="customerPhone" required placeholder="77 123 45 67">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerAddress">Adresse de livraison *</label>
+                    <textarea class="form-control" id="customerAddress" rows="3" required placeholder="Votre adresse complète..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerSize">Taille souhaitée (optionnel)</label>
+                    <select class="form-control" id="customerSize">
+                        <option value="">Sélectionner une taille</option>
+                        <option value="36">36</option>
+                        <option value="38">38</option>
+                        <option value="40">40</option>
+                        <option value="42">42</option>
+                        <option value="44">44</option>
+                        <option value="46">46</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="customerColor">Couleur préférée (optionnel)</label>
+                    <input type="text" class="form-control" id="customerColor" placeholder="ex: Noir, Blanc, Bleu...">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="customerNotes">Notes supplémentaires (optionnel)</label>
-                    <textarea class="form-control" id="customerNotes" rows="2"></textarea>
+                    <textarea class="form-control" id="customerNotes" rows="2" placeholder="Instructions spéciales, préférences..."></textarea>
                 </div>
                 
                 <!-- Section de paiement -->
                 <div class="payment-section">
-                    <h6>Méthode de paiement</h6>
+                    <h6>Méthode de paiement *</h6>
                     <div class="payment-methods">
                         <!-- SYSTÈME DE PAIEMENT WHATSAPP -->
                         <label class="payment-method" for="payment-whatsapp">
-                            <input type="radio" id="payment-whatsapp" name="paymentMethod" value="whatsapp">
+                            <input type="radio" id="payment-whatsapp" name="paymentMethod" value="whatsapp" checked>
                             <div class="payment-method-icon text-success">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
@@ -1142,6 +1162,11 @@
                             
                             <button class="btn btn-gold w-100" id="resetFilters">
                                 <i class="fas fa-redo me-2"></i>Réinitialiser
+                            </button>
+                            
+                            <!-- Bouton de test pour sauvegarder une commande de test -->
+                            <button class="btn btn-outline-info w-100 mt-3" onclick="testSaveOrder()">
+                                <i class="fas fa-vial me-1"></i> Test commande
                             </button>
                         </div>
                     </div>
@@ -1560,6 +1585,9 @@
         const productsPerPage = 12;
         let currentProductId = null;
 
+        // WhatsApp number
+        const whatsappNumber = "221781980844";
+
         // DOM Elements
         const cartButton = document.getElementById('cartButton');
         const cartCountElement = document.getElementById('cartCount');
@@ -1583,9 +1611,6 @@
         const orderForm = document.getElementById('orderForm');
         const orderSummaryItems = document.getElementById('orderSummaryItems');
         const orderSummaryTotal = document.getElementById('orderSummaryTotal');
-
-        // WhatsApp number
-        const whatsappNumber = "221781980844";
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1619,7 +1644,147 @@
             
             // Add form submit event listener
             orderForm.addEventListener('submit', processOrder);
+            
+            // Nettoyer les anciennes commandes
+            clearOldOrders();
         });
+
+        // =============================================
+        // FONCTIONS DE SAUVEGARDE DES COMMANDES
+        // =============================================
+
+        // SAUVEGARDE DES COMMANDES POUR L'ADMINISTRATION
+        function saveOrder(order) {
+            // Récupérer les commandes existantes
+            let existingOrders = JSON.parse(localStorage.getItem('customer_orders') || '[]');
+            
+            // Extraire les informations du formulaire
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            const customerSize = document.getElementById('customerSize').value || 'Non spécifié';
+            const customerColor = document.getElementById('customerColor').value || 'Non spécifié';
+            const customerNotes = document.getElementById('customerNotes').value || '';
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // Pour chaque produit dans le panier, créer une commande séparée
+            cart.forEach(item => {
+                const orderData = {
+                    id: Date.now() + Math.random(), // ID unique
+                    timestamp: new Date().toISOString(),
+                    name: customerName,
+                    email: customerEmail,
+                    phone: customerPhone,
+                    address: customerAddress,
+                    size: customerSize,
+                    color: customerColor,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: item.price,
+                    total: item.price * item.quantity,
+                    paymentMethod: paymentMethod,
+                    shippingMethod: 'Standard',
+                    notes: customerNotes,
+                    status: 'pending'
+                };
+                
+                existingOrders.push(orderData);
+            });
+            
+            // Sauvegarder dans le localStorage
+            localStorage.setItem('customer_orders', JSON.stringify(existingOrders));
+            
+            // Sauvegarde supplémentaire dans le format admin
+            saveOrderToAdmin(order);
+            
+            console.log('Commande(s) sauvegardée(s) pour l\'admin:', existingOrders.length);
+        }
+
+        // SAUVEGARDE SUPPLÉMENTAIRE POUR L'ADMINISTRATION
+        function saveOrderToAdmin(order) {
+            // Sauvegarde dans le format attendu par l'administration
+            const adminOrders = JSON.parse(localStorage.getItem('daleuuyurafett_orders')) || [];
+            
+            // Extraire les informations
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            const customerSize = document.getElementById('customerSize').value || 'N/A';
+            const customerColor = document.getElementById('customerColor').value || 'N/A';
+            const customerNotes = document.getElementById('customerNotes').value || '';
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // Si plusieurs produits, créer une commande combinée
+            if (cart.length > 1) {
+                const adminOrder = {
+                    id: `CMD-${Date.now()}`,
+                    name: customerName,
+                    email: customerEmail,
+                    phone: customerPhone,
+                    address: customerAddress,
+                    product: `Multiple produits (${cart.length} articles)`,
+                    quantity: cart.reduce((sum, item) => sum + item.quantity, 0),
+                    size: 'Multiple',
+                    color: 'Multiple',
+                    price: Math.round(cartTotal / cart.reduce((sum, item) => sum + item.quantity, 0)),
+                    total: cartTotal,
+                    date: new Date().toISOString(),
+                    status: 'pending',
+                    paymentMethod: paymentMethod,
+                    shippingMethod: 'Standard',
+                    shippingCost: cart.length > 1 ? 2000 : 1500,
+                    notes: customerNotes
+                };
+                
+                adminOrders.push(adminOrder);
+            } else if (cart.length === 1) {
+                // Si un seul produit
+                const item = cart[0];
+                const adminOrder = {
+                    id: `CMD-${Date.now()}`,
+                    name: customerName,
+                    email: customerEmail,
+                    phone: customerPhone,
+                    address: customerAddress,
+                    product: item.name,
+                    quantity: item.quantity,
+                    size: customerSize,
+                    color: customerColor,
+                    price: item.price,
+                    total: item.price * item.quantity,
+                    date: new Date().toISOString(),
+                    status: 'pending',
+                    paymentMethod: paymentMethod,
+                    shippingMethod: 'Standard',
+                    shippingCost: 1500,
+                    notes: customerNotes
+                };
+                
+                adminOrders.push(adminOrder);
+            }
+            
+            localStorage.setItem('daleuuyurafett_orders', JSON.stringify(adminOrders));
+        }
+
+        // NETTOYAGE DES ANCIENNES COMMANDES
+        function clearOldOrders() {
+            const now = new Date();
+            const thirtyDaysAgo = new Date(now.getTime() - (30 * 24 * 60 * 60 * 1000));
+            
+            const orders = JSON.parse(localStorage.getItem('customer_orders') || '[]');
+            const filteredOrders = orders.filter(order => {
+                const orderDate = new Date(order.timestamp || order.date);
+                return orderDate > thirtyDaysAgo;
+            });
+            
+            localStorage.setItem('customer_orders', JSON.stringify(filteredOrders));
+        }
+
+        // =============================================
+        // FONCTIONS EXISTANTES
+        // =============================================
 
         // Set up event listeners
         function setupEventListeners() {
@@ -1707,7 +1872,7 @@
                     break;
                 default:
                     // Default sorting (by ID)
-                    filteredProducts.sort((a, b) => a.id - b.id);
+                    filteredProducts.sort((a, b) => a.id - a.id);
             }
         }
 
@@ -1864,6 +2029,9 @@
                                         <span class="badge bg-secondary me-2">${size}</span>
                                     `).join('')}
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Catégorie:</strong> ${getCategoryName(product.category)}
                             </div>
                         </div>
                     </div>
@@ -2083,44 +2251,71 @@
             e.preventDefault();
             
             const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
             const customerPhone = document.getElementById('customerPhone').value;
             const customerAddress = document.getElementById('customerAddress').value;
+            const customerSize = document.getElementById('customerSize').value || '';
+            const customerColor = document.getElementById('customerColor').value || '';
             const customerNotes = document.getElementById('customerNotes').value;
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
             
-            // GÉNÉRATION AUTOMATIQUE DU MESSAGE WHATSAPP
-            let orderDetails = `Nouvelle commande - DaleuuYuRafett\n\n`;
-            orderDetails += `Client: ${customerName}\n`;
-            orderDetails += `Téléphone: ${customerPhone}\n`;
-            orderDetails += `Adresse: ${customerAddress}\n`;
-            orderDetails += `Méthode de paiement: ${getPaymentMethodName(paymentMethod)}\n`;
-            if (customerNotes) {
-                orderDetails += `Notes: ${customerNotes}\n`;
+            // Validation
+            if (!customerName || !customerEmail || !customerPhone || !customerAddress) {
+                showNotification('error', 'Veuillez remplir tous les champs obligatoires (*)');
+                return;
             }
-            orderDetails += `\nDétails de la commande:\n`;
             
-            cart.forEach(item => {
-                orderDetails += `- ${item.name} (x${item.quantity}) - ${(item.price * item.quantity).toLocaleString()} FCFA\n`;
-            });
-            
-            orderDetails += `\nTotal: ${cartTotal.toLocaleString()} FCFA`;
-            orderDetails += `\n\nDate: ${new Date().toLocaleString('fr-FR')}`;
-            
-            // SAUVEGARDE DE LA COMMANDE POUR L'ADMIN
+            // Créer l'objet commande
             const order = {
                 id: Date.now(),
                 customerName,
+                customerEmail,
                 customerPhone,
                 customerAddress,
+                customerSize,
+                customerColor,
                 customerNotes,
                 paymentMethod,
-                items: [...cart],
+                items: cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.price,
+                    size: customerSize,
+                    color: customerColor
+                })),
                 total: cartTotal,
                 date: new Date().toISOString(),
-                status: paymentMethod === 'whatsapp' ? 'En attente de confirmation' : 'En attente de paiement'
+                status: 'pending'
             };
             
+            // SAUVEGARDE DE LA COMMANDE POUR L'ADMIN
             saveOrder(order);
+            
+            // GÉNÉRATION AUTOMATIQUE DU MESSAGE WHATSAPP
+            let orderDetails = `🛍️ *NOUVELLE COMMANDE - DaleuuYuRafett* 🛍️\n\n`;
+            orderDetails += `📋 *DÉTAILS DU CLIENT*\n`;
+            orderDetails += `👤 *Nom:* ${customerName}\n`;
+            orderDetails += `📧 *Email:* ${customerEmail}\n`;
+            orderDetails += `📱 *Téléphone:* ${customerPhone}\n`;
+            orderDetails += `📍 *Adresse:* ${customerAddress}\n`;
+            if (customerSize) orderDetails += `📏 *Taille:* ${customerSize}\n`;
+            if (customerColor) orderDetails += `🎨 *Couleur:* ${customerColor}\n`;
+            if (customerNotes) orderDetails += `📝 *Notes:* ${customerNotes}\n`;
+            orderDetails += `💳 *Paiement:* ${getPaymentMethodName(paymentMethod)}\n`;
+            
+            orderDetails += `\n🛒 *ARTICLES COMMANDÉS*\n`;
+            cart.forEach((item, index) => {
+                orderDetails += `\n${index + 1}. *${item.name}*\n`;
+                orderDetails += `   📦 Quantité: ${item.quantity}\n`;
+                orderDetails += `   💰 Prix unitaire: ${item.price.toLocaleString()} FCFA\n`;
+                orderDetails += `   🧾 Sous-total: ${(item.price * item.quantity).toLocaleString()} FCFA\n`;
+            });
+            
+            orderDetails += `\n💰 *TOTAL: ${cartTotal.toLocaleString()} FCFA*\n\n`;
+            orderDetails += `📅 *Date:* ${new Date().toLocaleDateString('fr-FR')}\n`;
+            orderDetails += `⏰ *Heure:* ${new Date().toLocaleTimeString('fr-FR')}\n`;
+            orderDetails += `🔖 *ID Commande:* CMD-${order.id}`;
             
             // GESTION DES DIFFÉRENTES MÉTHODES DE PAIEMENT
             if (paymentMethod === 'whatsapp') {
@@ -2134,10 +2329,17 @@
                 showNotification('success', 'Commande envoyée avec succès! Vérifiez WhatsApp.');
             } else {
                 // PAIEMENTS MOBILE MONEY
+                const paymentInstructions = `
+                    Pour payer avec ${getPaymentMethodName(paymentMethod)}, veuillez envoyer ${cartTotal.toLocaleString()} FCFA au numéro approprié.
+                    \n\n🔢 *Numéro de paiement:* ${getPaymentNumber(paymentMethod)}
+                    \n📝 *Référence:* ${customerName} - CMD-${order.id}
+                    \n💰 *Montant:* ${cartTotal.toLocaleString()} FCFA
+                `;
+                
                 showNotification('success', `Instructions de paiement ${getPaymentMethodName(paymentMethod)} envoyées!`);
                 
                 setTimeout(() => {
-                    alert(`Veuillez effectuer le paiement de ${cartTotal.toLocaleString()} FCFA via ${getPaymentMethodName(paymentMethod)} selon les instructions affichées.`);
+                    alert(paymentInstructions);
                 }, 500);
             }
             
@@ -2162,14 +2364,15 @@
             }
         }
 
-        // SAUVEGARDE DES COMMANDES POUR L'ADMIN
-        function saveOrder(order) {
-            let orders = JSON.parse(localStorage.getItem('daleuuyurafett_orders')) || [];
-            orders.push(order);
-            localStorage.setItem('daleuuyurafett_orders', JSON.stringify(orders));
-            
-            // Afficher une notification pour l'admin
-            showNotification('success', 'Commande enregistrée dans le tableau de bord!');
+        // Get payment number
+        function getPaymentNumber(method) {
+            switch(method) {
+                case 'wave': return '+221 78 123 45 67';
+                case 'orange': return '+221 77 123 45 67';
+                case 'free': return '+221 76 123 45 67';
+                case 'kpay': return '+221 70 123 45 67';
+                default: return '+221 78 123 45 67';
+            }
         }
 
         // Vider le panier
@@ -2234,6 +2437,49 @@
             animateElements.forEach(element => {
                 observer.observe(element);
             });
+        }
+
+        // =============================================
+        // FONCTION DE TEST POUR SAUVEGARDER UNE COMMANDE
+        // =============================================
+
+        function testSaveOrder() {
+            // Créer une commande de test
+            const testOrder = {
+                name: "Fatou Diop",
+                email: "fatou.diop@example.com",
+                phone: "77 123 45 67",
+                address: "Rue 10, Point E, Dakar",
+                productName: "Baskets Classiques Noir",
+                quantity: 2,
+                size: "42",
+                color: "Noir",
+                paymentMethod: "whatsapp",
+                shippingMethod: "Express",
+                notes: "Commande de test - Livrer après 18h",
+                timestamp: new Date().toISOString(),
+                price: 25000,
+                total: 50000
+            };
+            
+            // Sauvegarder dans le localStorage
+            let existingOrders = JSON.parse(localStorage.getItem('customer_orders') || '[]');
+            existingOrders.push(testOrder);
+            localStorage.setItem('customer_orders', JSON.stringify(existingOrders));
+            
+            // Afficher une notification
+            showNotification('success', 'Commande de test sauvegardée!');
+            
+            // Afficher dans la console
+            console.log('Commande test sauvegardée:', testOrder);
+            console.log('Total commandes dans le localStorage:', existingOrders.length);
+            
+            // Demander si on veut tester l'import dans l'admin
+            setTimeout(() => {
+                if (confirm('Voulez-vous tester l\'import dans la page d\'administration maintenant ?')) {
+                    window.open('admin.html', '_blank');
+                }
+            }, 1000);
         }
     </script>
 </body>
